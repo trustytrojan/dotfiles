@@ -221,5 +221,8 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 
 default_border pixel 2
 
-client.focused #00000000 #ffffff #00000000 #ffffff
-client.unfocused #00000000 #808080 #00000000 #808080
+set $focused_border_color #00dddd
+set $unfocused_border_color #808080
+
+client.focused #00000000 $focused_border_color #00000000 $focused_border_color 
+client.unfocused #00000000 $unfocused_border_color #00000000 $unfocused_border_color
