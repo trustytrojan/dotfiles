@@ -1,107 +1,163 @@
-# man 5 sway
-# man 5 sway-input
-# man 5 sway-output
+# Read `man 5 sway` to understand sway configuration
 
-font pango: Monocode Regular 10
+#
+# Essentials
+#
+	# Set mod key (Mod4 = Windows/Super key)
+	set $mod Mod4
 
-# Set mod key (Mod4 = Windows/Super key)
-set $mod Mod4
+	# Terminal command
+	set $term foot
 
-# Terminal command
-set $term foot
+	# Application launcher command
+	set $menu wofi --show=drun
 
-# Application launcher command
-set $menu wofi --show=drun
+	# Set background of all outputs
+	# I'm only running this on a laptop so output configuration is not essential for me
+	# Read `man 5 sway-output` to learn more
+	output * bg ~/.wallpaper.jpg fill
 
-# Set background of all outputs
-output * bg ~/.wallpaper.jpg fill
+	# Lock screen (configured in ~/.config/swaylock/config)
+	bindsym $mod+l exec swaylock
 
-# Lock screen (configured in ~/.config/swaylock/config)
-bindsym $mod+l exec swaylock
+	# Screenshot (Print = "print screen" key)
+	bindsym Print exec grim -g "$(slurp)" - | wl-copy
 
-# Screenshot
-bindsym Print exec grim -g "$(slurp)" - | wl-copy
+	# Start a terminal
+	bindsym $mod+Return exec $term
 
-# Inhibit idle when any window is fullscreen
-#for_window [class=".*"] inhibit_idle fullscreen
-#for_window [app_id=".*"] inhibit_idle fullscreen
+	# Kill focused window
+	bindsym $mod+Shift+q kill
 
-input "type:keyboard" {
-	# Decrease the delay from holding a key to repeating key presses
-	repeat_delay 200
-}
+	# Start your launcher
+	bindsym $mod+d exec $menu
 
-input "type:pointer" {
-	# Disable mouse acceleration
-	accel_profile flat
-}
+	# Drag floating windows by holding down $mod and left mouse button.
+	# Resize them with right mouse button + $mod.
+	# Despite the name, also works for non-floating windows.
+	floating_modifier $mod normal
 
-input "type:touchpad" {
-	# Disable mouse acceleration
-	accel_profile flat
+	# Reload the configuration file
+	bindsym $mod+Shift+c reload
+
+	# Exit sway (logs you out of your Wayland session)
+	bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+	# Inhibit idle when any window is fullscreen
+	#for_window [class=".*"] inhibit_idle fullscreen
+	#for_window [app_id=".*"] inhibit_idle fullscreen
+
+	# Volume and mute key bindings using pulseaudio
+	bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+	bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+	bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+	bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+	# Brightness key bindings using brightnessctl
+	bindsym XF86MonBrightnessUp exec brightnessctl s +5%
+	bindsym XF86MonBrightnessDown exec brightnessctl s 5%-
+
+	# Lock when laptop lid closes
+	bindsym XF86ScreenSaver exec swaylock
+
+	# Start the swayidle daemon (configured in ~/.config/swayidle/config)
+	exec swayidle
+
+#
+# Preferences
+#
+	# Font
+	font pango: Monocode Regular 10
 	
-	# Maximize cursor speed
-	pointer_accel 1
+	# Require click to focus windows
+	focus_follows_mouse no
+
+	# Gap width between tiled windows in pixels
+	gaps outer 0
+	gaps inner 10
 	
-	# Right-click when two fingers press
-	click_method clickfinger
-}
+	# Window border width in pixels
+	default_border pixel 2
 
-# Start a terminal
-bindsym $mod+Return exec $term
+	# Window border colors when focused and unfocused
+	# Read `man 5 sway` to understand this
+	client.focused #00bbbb #00aaaa #eeeeee #00aaaa
+	client.unfocused #00aaaa #808080 #eeeeee #808080
 
-# Kill focused window
-bindsym $mod+Shift+q kill
+#
+# Swaybar
+# Read `man 5 sway-bar`, no need here since I use waybar
+#
+	bar {
+		swaybar_command waybar
+	}
 
-# Start your launcher
-bindsym $mod+d exec $menu
+#
+# Input device configuration
+# Read `man 5 sway-input`
+#
+	input "type:keyboard" {
+		# Decrease the delay from holding a key to repeating key presses
+		repeat_delay 200
+	}
 
-# Drag floating windows by holding down $mod and left mouse button.
-# Resize them with right mouse button + $mod.
-# Despite the name, also works for non-floating windows.
-floating_modifier $mod normal
+	input "type:pointer" {
+		# Disable mouse acceleration
+		accel_profile flat
+	}
 
-# Reload the configuration file
-bindsym $mod+Shift+c reload
+	input "type:touchpad" {
+		# Disable mouse acceleration
+		accel_profile flat
 
-# Exit sway (logs you out of your Wayland session)
-bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+		# Maximize cursor speed
+		pointer_accel 1
 
-# Move your focus around
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+		# Right-click when two fingers press
+		click_method clickfinger
+	}
 
-# Move the focused window with the same, but add Shift
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+#
+# Window focusing and moving:
+#
+	# Move your focus around
+	bindsym $mod+Left focus left
+	bindsym $mod+Down focus down
+	bindsym $mod+Up focus up
+	bindsym $mod+Right focus right
 
-# Switch to workspace
-bindsym $mod+1 workspace number 1
-bindsym $mod+2 workspace number 2
-bindsym $mod+3 workspace number 3
-bindsym $mod+4 workspace number 4
-bindsym $mod+5 workspace number 5
-bindsym $mod+6 workspace number 6
-bindsym $mod+7 workspace number 7
-bindsym $mod+8 workspace number 8
-bindsym $mod+9 workspace number 9
-bindsym $mod+0 workspace number 10
+	# Move the focused window with the same, but add Shift
+	bindsym $mod+Shift+Left move left
+	bindsym $mod+Shift+Down move down
+	bindsym $mod+Shift+Up move up
+	bindsym $mod+Shift+Right move right
 
-# Move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number 1
-bindsym $mod+Shift+2 move container to workspace number 2
-bindsym $mod+Shift+3 move container to workspace number 3
-bindsym $mod+Shift+4 move container to workspace number 4
-bindsym $mod+Shift+5 move container to workspace number 5
-bindsym $mod+Shift+6 move container to workspace number 6
-bindsym $mod+Shift+7 move container to workspace number 7
-bindsym $mod+Shift+8 move container to workspace number 8
-bindsym $mod+Shift+9 move container to workspace number 9
-bindsym $mod+Shift+0 move container to workspace number 10
+#
+# Workspace management:
+#
+	# Switch to workspace
+	bindsym $mod+1 workspace number 1
+	bindsym $mod+2 workspace number 2
+	bindsym $mod+3 workspace number 3
+	bindsym $mod+4 workspace number 4
+	bindsym $mod+5 workspace number 5
+	bindsym $mod+6 workspace number 6
+	bindsym $mod+7 workspace number 7
+	bindsym $mod+8 workspace number 8
+	bindsym $mod+9 workspace number 9
+	bindsym $mod+0 workspace number 10
+
+	# Move focused container to workspace
+	bindsym $mod+Shift+1 move container to workspace number 1
+	bindsym $mod+Shift+2 move container to workspace number 2
+	bindsym $mod+Shift+3 move container to workspace number 3
+	bindsym $mod+Shift+4 move container to workspace number 4
+	bindsym $mod+Shift+5 move container to workspace number 5
+	bindsym $mod+Shift+6 move container to workspace number 6
+	bindsym $mod+Shift+7 move container to workspace number 7
+	bindsym $mod+Shift+8 move container to workspace number 8
+	bindsym $mod+Shift+9 move container to workspace number 9
+	bindsym $mod+Shift+0 move container to workspace number 10
 
 #
 # Layout stuff:
@@ -145,56 +201,22 @@ bindsym $mod+Shift+0 move container to workspace number 10
 #
 # Resizing containers:
 #
-mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
+	# Enable resize mode with this binding
+	bindsym $mod+r mode "resize"
 
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
+	# When mode is "resize" these keybinds will be active
+	mode "resize" {
+		# left will shrink the containers width
+		# right will grow the containers width
+		# up will shrink the containers height
+		# down will grow the containers height
 
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
+		bindsym Left resize shrink width 10px
+		bindsym Down resize grow height 10px
+		bindsym Up resize shrink height 10px
+		bindsym Right resize grow width 10px
 
-# Enable resize mode with this binding
-bindsym $mod+r mode "resize"
-
-# man 5 sway-bar
-bar {
-    swaybar_command waybar
-}
-
-# Require click to focus windows
-focus_follows_mouse no
-
-# Gaps between tiled windows
-gaps outer 0
-gaps inner 10
-
-# Volume and mute key bindings using pulseaudio
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
-
-# Window border width in pixels
-default_border pixel 2
-
-# Window border colors when focused and unfocused
-client.focused #00bbbb #00aaaa #eeeeee #00aaaa
-client.unfocused #00aaaa #808080 #eeeeee #808080
-
-# Brightness key bindings using brightnessctl
-bindsym XF86MonBrightnessUp exec brightnessctl s +5%
-bindsym XF86MonBrightnessDown exec brightnessctl s 5%-
-
-# Lock when laptop lid closes
-bindsym XF86ScreenSaver exec swaylock
-
-# Start the swayidle daemon (configured in ~/.config/swayidle/config)
-exec swayidle
+		# Return to default mode
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
+	}
