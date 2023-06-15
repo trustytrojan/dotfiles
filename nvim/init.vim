@@ -1,21 +1,21 @@
 " Don't expand tabs into spaces
-	set noexpandtab
+set noexpandtab
 
 " Render tabs as 4 spaces
-	set tabstop=4
-	set shiftwidth=4
+set tabstop=4
+set shiftwidth=4
 
 " Custom highlight colors
-	highlight Statement ctermfg=133 cterm=bold
-	highlight Operator ctermfg=15
-	highlight Function ctermfg=228
-	highlight Identifier ctermfg=117 cterm=NONE
-	highlight PreProc ctermfg=105
+highlight Statement ctermfg=133 cterm=bold
+highlight Operator ctermfg=15
+highlight Function ctermfg=228
+highlight Identifier ctermfg=117 cterm=NONE
+highlight PreProc ctermfg=105
 
 " vim-plug
-	call plug#begin()
-	Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-	call plug#end()
+call plug#begin()
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+call plug#end()
 
 " coc.nvim
 	" Some servers have issues with backup files, see #649
