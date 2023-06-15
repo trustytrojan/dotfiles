@@ -3,8 +3,6 @@ set noexpandtab
 set tabstop=4
 set shiftwidth=4
 
-set scroll=1
-
 call plug#begin()
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 call plug#end()
@@ -25,11 +23,8 @@ set signcolumn=yes
 " <C-g>u breaks current undo, please make your own choice
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-autocmd ColorScheme * hi CocUnusedHighlight ctermbg=NONE guibg=NONE guifg=#808080
-
-highlight CocSemType cterm=bold ctermfg=156
-highlight CocSemEnumMember cterm=bold ctermfg=194
-highlight CocSemVariable ctermfg=123
-highlight CocSemFunction ctermfg=228
-highlight CocSemMacro ctermfg=21
-
+highlight Statement ctermfg=133 cterm=bold
+highlight Operator ctermfg=15
+highlight Function ctermfg=228
+highlight Identifier ctermfg=117 cterm=NONE
+highlight PreProc ctermfg=105
