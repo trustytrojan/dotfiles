@@ -48,10 +48,10 @@
 	#for_window [app_id=".*"] inhibit_idle fullscreen
 
 	# Volume and mute key bindings using pulseaudio
-	bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
-	bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
-	bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-	bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+	bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+	bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+	bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+	bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 	# Brightness key bindings using brightnessctl
 	bindsym XF86MonBrightnessUp exec brightnessctl s +5%
@@ -68,14 +68,14 @@
 #
 	# Font
 	font pango: Monocode Regular 10
-	
+
 	# Require click to focus windows
 	focus_follows_mouse no
 
 	# Gap width between tiled windows in pixels
 	gaps outer 0
 	gaps inner 10
-	
+
 	# Window border width in pixels
 	default_border pixel 2
 
