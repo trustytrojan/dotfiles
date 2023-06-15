@@ -1,4 +1,6 @@
-# `man 5 sway`
+# man 5 sway
+# man 5 sway-input
+# man 5 sway-output
 
 font pango: Monocode Regular 10
 set $mod Mod4
