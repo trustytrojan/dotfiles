@@ -3,4 +3,5 @@
 ### Make sure to:
 
 - Install `otf-font-awesome` for Waybar icons
-- Install `pulseaudio` for the speaker/microphone volume Waybar module
+- Install `pulseaudio` for the Waybar speaker/microphone volume module
+- Install `swaylock-effects` from AUR for a blurred lock screen
