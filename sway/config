@@ -65,6 +65,7 @@
 
 	# Night shift via gammastep daemon
 	exec gammastep
+
 #
 # Preferences
 #
@@ -90,25 +91,42 @@
 # Swaybar
 # Read `man 5 sway-bar`, no need here since I use waybar
 #
-	bar {
-		swaybar_command waybar
-	}
+bar {
+	swaybar_command waybar
+}
+
+#
+# Output device configuration
+# Read `man 5 sway-output`
+#
+output {
+	# Set background for all outputs
+	* bg ~/.wallpeper.jpg
+
+	#
+	# Mode/resolution configuration: read the man page for more details
+	# I believe by default the resolution is maximized and refresh rate is 60Hz
+	#
+		# Set resolution to 1920x1080 and refresh rate to 144hz for output DP-1 (the first DisplayPort port on the video card)
+		#DP-1 mode 1920x1080@144Hz
+}
 
 #
 # Input device configuration
 # Read `man 5 sway-input`
 #
-	input "type:keyboard" {
+input {
+	"type:keyboard" {
 		# Decrease the delay from holding a key to repeating key presses
 		repeat_delay 200
 	}
 
-	input "type:pointer" {
+	"type:pointer" {
 		# Disable mouse acceleration
 		accel_profile flat
 	}
 
-	input "type:touchpad" {
+	"type:touchpad" {
 		# Disable mouse acceleration
 		accel_profile flat
 
@@ -118,6 +136,7 @@
 		# Sensitivity
 		pointer_accel 0.75
 	}
+}
 
 #
 # Window focusing and moving:
