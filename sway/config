@@ -1,7 +1,7 @@
-# Read `man 5 sway` to understand sway configuration
+# `man 5 sway`
 
 #
-# Essentials
+# Essentials:
 #
 	# Set mod key (Mod4 = Windows/Super key)
 	set $mod Mod4
@@ -62,7 +62,7 @@
 	exec gammastep
 
 #
-# Preferences
+# Preferences:
 #
 	# Font
 	font pango: Monocode Regular 10
@@ -83,16 +83,14 @@
 	client.unfocused #00aaaa #808080 #eeeeee #808080
 
 #
-# Swaybar
-# Read `man 5 sway-bar`, no need here since I use waybar
+# Bar configuration: `man 5 sway-bar`
 #
 bar {
 	swaybar_command waybar
 }
 
 #
-# Output device configuration
-# Read `man 5 sway-output`
+# Output device configuration: `man 5 sway-output`
 #
 output {
 	# Set background for all outputs
@@ -107,8 +105,7 @@ output {
 }
 
 #
-# Input device configuration
-# Read `man 5 sway-input`
+# Input device configuration: `man 5 sway-input`
 #
 input {
 	"type:keyboard" {
