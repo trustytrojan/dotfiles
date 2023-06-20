@@ -94,7 +94,7 @@ bar {
 #
 output {
 	# Set background for all outputs
-	* bg ~/.wallpeper.jpg
+	* bg ~/.wallpeper.jpg fill
 
 	#
 	# Mode/resolution configuration: read the man page for more details
