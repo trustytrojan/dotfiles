@@ -63,6 +63,8 @@
 	# Start the swayidle daemon (configured in ~/.config/swayidle/config)
 	exec swayidle
 
+	# Night shift via gammastep daemon
+	exec gammastep
 #
 # Preferences
 #
@@ -110,11 +112,11 @@
 		# Disable mouse acceleration
 		accel_profile flat
 
-		# Maximize cursor speed
-		pointer_accel 1
-
 		# Right-click when two fingers press
 		click_method clickfinger
+
+		# Sensitivity
+		pointer_accel 0.75
 	}
 
 #
