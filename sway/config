@@ -12,11 +12,6 @@
 	# Application launcher command
 	set $menu wofi --show=drun
 
-	# Set background of all outputs
-	# I'm only running this on a laptop so output configuration is not essential for me
-	# Read `man 5 sway-output` to learn more
-	output * bg ~/.wallpaper.jpg fill
-
 	# Lock screen (configured in ~/.config/swaylock/config)
 	bindsym $mod+l exec swaylock
 
