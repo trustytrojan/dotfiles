@@ -1,7 +1,7 @@
-# `man 5 sway`
+# Read `man 5 sway` to understand sway configuration
 
 #
-# Essentials:
+# Essentials
 #
 	# Set mod key (Mod4 = Windows/Super key)
 	set $mod Mod4
@@ -11,6 +11,11 @@
 
 	# Application launcher command
 	set $menu wofi --show=drun
+
+	# Set background of all outputs
+	# I'm only running this on a laptop so output configuration is not essential for me
+	# Read `man 5 sway-output` to learn more
+	output * bg ~/.wallpaper.jpg fill
 
 	# Lock screen (configured in ~/.config/swaylock/config)
 	bindsym $mod+l exec swaylock
@@ -61,8 +66,11 @@
 	# Night shift via gammastep daemon
 	exec gammastep
 
+	# dbus
+	exec dbus-update-activation-environment DISPLAY XAUTHORITY WAYLAND_DISPLAY
+
 #
-# Preferences:
+# Preferences
 #
 	# Font
 	font pango: Monocode Regular 10
@@ -83,42 +91,28 @@
 	client.unfocused #00aaaa #808080 #eeeeee #808080
 
 #
-# Bar configuration: `man 5 sway-bar`
+# Swaybar
+# Read `man 5 sway-bar`, no need here since I use waybar
 #
-bar {
-	swaybar_command waybar
-}
+	bar {
+		swaybar_command waybar
+	}
 
 #
-# Output device configuration: `man 5 sway-output`
+# Input device configuration
+# Read `man 5 sway-input`
 #
-output {
-	# Set background for all outputs
-	* bg ~/.wallpaper.jpg fill
-
-	#
-	# Mode/resolution configuration: read the man page for more details
-	# I believe by default the resolution is maximized and refresh rate is 60Hz
-	#
-		# Set resolution to 1920x1080 and refresh rate to 144hz for output DP-1 (the first DisplayPort port on the video card)
-		#DP-1 mode 1920x1080@144Hz
-}
-
-#
-# Input device configuration: `man 5 sway-input`
-#
-input {
-	"type:keyboard" {
+	input "type:keyboard" {
 		# Decrease the delay from holding a key to repeating key presses
 		repeat_delay 200
 	}
 
-	"type:pointer" {
+	input "type:pointer" {
 		# Disable mouse acceleration
 		accel_profile flat
 	}
 
-	"type:touchpad" {
+	input "type:touchpad" {
 		# Disable mouse acceleration
 		accel_profile flat
 
@@ -128,7 +122,6 @@ input {
 		# Sensitivity
 		pointer_accel 0.75
 	}
-}
 
 #
 # Window focusing and moving:
