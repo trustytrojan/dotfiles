@@ -1,21 +1,18 @@
 {
-    // "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
-//    "height": 30, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
     "margin-top": 10,
     "margin-left": 10,
     "margin-right": 10,
     "offset": 10,
     "spacing": 4, // Gaps between modules (4px)
-    // Choose the order of the modules
+
     "modules-left": ["sway/workspaces", "sway/mode", "sway/scratchpad"],
     "modules-center": ["sway/window"],
     "modules-right": ["pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery", "clock", "tray"],
-    // Modules configuration
+
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
+
     "sway/scratchpad": {
         "format": "{icon} {count}",
         "show-empty": false,
@@ -23,22 +20,27 @@
         "tooltip": true,
         "tooltip-format": "{app}: {title}"
     },
+
     "tray": {
         // "icon-size": 21,
         "spacing": 10
     },
+
     "clock": {
         // "timezone": "America/New_York",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     },
+
     "cpu": {
         "format": "{usage}% ",
         "tooltip": false
     },
+
     "memory": {
         "format": "{}% "
     },
+
     "temperature": {
         // "thermal-zone": 2,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
@@ -47,11 +49,13 @@
         "format": "{temperatureC}°C {icon}",
         "format-icons": ["", "", ""]
     },
+
     "backlight": {
         // "device": "acpi_video1",
         "format": "{percent}% {icon}",
         "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
+
     "battery": {
         "states": {
             // "good": 95,
@@ -66,6 +70,7 @@
         // "format-full": "",
         "format-icons": ["", "", "", "", ""]
     },
+
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ({signalStrength}%) ",
@@ -75,6 +80,7 @@
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
+
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon} {format_source}",
