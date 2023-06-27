@@ -1,4 +1,4 @@
-# My home usual Linux home directory structure
+# My usual Linux home directory structure
 
 Clone if you'd like.
 
