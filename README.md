@@ -1,4 +1,4 @@
-### If installing sway:
+### If installing `sway`:
 
 - Get the main font: [Monocode](https://github.com/aaronmbos/monocode)
 - Install `otf-font-awesome` for Waybar icons
