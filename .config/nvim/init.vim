@@ -5,7 +5,7 @@ set noexpandtab
 set tabstop=4
 set shiftwidth=4
 
-" Custom highlight colors
+" Custom colors
 highlight Statement ctermfg=133 cterm=bold
 highlight Operator ctermfg=15
 highlight Function ctermfg=228
@@ -25,3 +25,7 @@ call plug#end()
 	" Always show the signcolumn, otherwise it would shift the text each time
 	" diagnostics appear/become resolved
 	set signcolumn=yes
+
+	" Make <CR> to accept selected completion item or notify coc.nvim to format
+	" <C-g>u breaks current undo, please make your own choice
+	inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
