@@ -66,7 +66,7 @@
 	# Night shift via gammastep daemon
 	exec gammastep
 
-	# https://wiki.archlinux.org/title/GNOME/Keyring#Launching_gnome-keyring-daemon_outside_desktop_environments_(KDE,_GNOME,_XFCE,_...)
+	# dbus
 	exec dbus-update-activation-environment DISPLAY XAUTHORITY WAYLAND_DISPLAY
 
 #
@@ -74,9 +74,6 @@
 #
 	# Font
 	font pango: Monocode Regular 10
-
-	# Require click to focus windows
-	focus_follows_mouse no
 
 	# Gap width between tiled windows in pixels
 	gaps outer 0
