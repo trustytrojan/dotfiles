@@ -122,25 +122,25 @@ output {
 	* bg ~/.wallpaper.jpg fill
 }
 
+bindsym {
 #
 # Window focusing and moving:
 #
 	# Move your focus around
-	bindsym $mod+Left focus left
-	bindsym $mod+Down focus down
-	bindsym $mod+Up focus up
-	bindsym $mod+Right focus right
+	$mod+Left focus left
+	$mod+Down focus down
+	$mod+Up focus up
+	$mod+Right focus right
 
 	# Move the focused window with the same, but add Shift
-	bindsym $mod+Shift+Left move left
-	bindsym $mod+Shift+Down move down
-	bindsym $mod+Shift+Up move up
-	bindsym $mod+Shift+Right move right
+	$mod+Shift+Left move left
+	$mod+Shift+Down move down
+	$mod+Shift+Up move up
+	$mod+Shift+Right move right
 
 #
 # Workspace management:
 #
-bindsym {
 	# Switch to workspace
 	$mod+1 workspace number 1
 	$mod+2 workspace number 2
@@ -164,12 +164,10 @@ bindsym {
 	$mod+Shift+8 move container to workspace number 8
 	$mod+Shift+9 move container to workspace number 9
 	$mod+Shift+0 move container to workspace number 10
-}
 
 #
 # Layout stuff:
 #
-bindsym {
 	# You can "split" the current object of your focus with
 	# $mod+b or $mod+v, for horizontal and vertical splits
 	# respectively.
@@ -192,7 +190,6 @@ bindsym {
 	
 	# Move focus to the parent container
 	$mod+a focus parent
-}
 
 #
 # Scratchpad:
@@ -201,11 +198,12 @@ bindsym {
 	# You can send windows there and get them back later.
 	
 	# Move the currently focused window to the scratchpad
-	bindsym $mod+Shift+minus move scratchpad
+	$mod+Shift+minus move scratchpad
 	
 	# Show the next scratchpad window or hide the focused scratchpad window.
 	# If there are multiple scratchpad windows, this command cycles through them.
-	bindsym $mod+minus scratchpad show
+	$mod+minus scratchpad show
+}
 
 #
 # Resizing containers:
@@ -214,18 +212,18 @@ bindsym {
 	bindsym $mod+r mode "resize"
 
 	# When mode is "resize" these keybinds will be active
-	mode "resize" {
+	mode "resize" bindsym {
 		# left will shrink the containers width
 		# right will grow the containers width
 		# up will shrink the containers height
 		# down will grow the containers height
 
-		bindsym Left resize shrink width 10px
-		bindsym Down resize grow height 10px
-		bindsym Up resize shrink height 10px
-		bindsym Right resize grow width 10px
+		Left resize shrink width 10px
+		Down resize grow height 10px
+		Up resize shrink height 10px
+		Right resize grow width 10px
 
 		# Return to default mode
-		bindsym Return mode "default"
-		bindsym Escape mode "default"
+		Return mode "default"
+		Escape mode "default"
 	}
