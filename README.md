@@ -1,4 +1,8 @@
-### If installing `sway`:
+# My home usual Linux home directory structure
+
+Clone if you'd like.
+
+### If setting up `sway`:
 
 - Get the main font: [Monocode](https://github.com/aaronmbos/monocode)
 - Install `otf-font-awesome` for Waybar icons
