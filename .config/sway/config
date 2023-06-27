@@ -1,4 +1,4 @@
-# Read `man 5 sway` to understand sway configuration
+# `man 5 sway`
 
 #
 # Essentials
@@ -11,11 +11,6 @@
 
 	# Application launcher command
 	set $menu wofi --show=drun
-
-	# Set background of all outputs
-	# I'm only running this on a laptop so output configuration is not essential for me
-	# Read `man 5 sway-output` to learn more
-	output * bg ~/.wallpaper.jpg fill
 
 	# Lock screen (configured in ~/.config/swaylock/config)
 	bindsym $mod+l exec swaylock
@@ -91,25 +86,26 @@
 # Swaybar
 # Read `man 5 sway-bar`, no need here since I use waybar
 #
-	bar {
-		swaybar_command waybar
-	}
+bar {
+	swaybar_command waybar
+}
 
 #
 # Input device configuration
-# Read `man 5 sway-input`
+# `man 5 sway-input`
 #
-	input "type:keyboard" {
+input {
+	"type:keyboard" {
 		# Decrease the delay from holding a key to repeating key presses
 		repeat_delay 200
 	}
 
-	input "type:pointer" {
+	"type:pointer" {
 		# Disable mouse acceleration
 		accel_profile flat
 	}
 
-	input "type:touchpad" {
+	"type:touchpad" {
 		# Disable mouse acceleration
 		accel_profile flat
 
@@ -119,6 +115,16 @@
 		# Sensitivity
 		pointer_accel 0.75
 	}
+}
+
+#
+# Output device configuration
+# `man 5 sway-output`
+#
+output {
+	# Set background of all outputs
+	* bg ~/.wallpaper.jpg fill
+}
 
 #
 # Window focusing and moving:
