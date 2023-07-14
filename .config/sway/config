@@ -26,6 +26,9 @@
 	# dbus
 	exec dbus-update-activation-environment DISPLAY XAUTHORITY WAYLAND_DISPLAY
 
+	# polkit-dumb-agent
+	exec polkit-dumb-agent
+
 #
 # Preferences
 #
