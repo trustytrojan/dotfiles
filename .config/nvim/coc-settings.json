@@ -1,5 +1,0 @@
-{
-	"clangd.path": "~/.local/bin/clangd",
-	"inlayHint.enable": false,
-	"semanticTokens.enable": true
-}
