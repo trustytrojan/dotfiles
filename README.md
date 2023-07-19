@@ -1,4 +1,4 @@
-# my linux home configs
+# My home directory for Arch Linux
 
 ### To set up `sway`:
 
