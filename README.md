@@ -1,6 +1,4 @@
-# My usual Linux home directory structure
-
-Clone if you'd like.
+# my linux home configs
 
 ### If setting up `sway`:
 
