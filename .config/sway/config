@@ -89,6 +89,9 @@ input {
 output {
 	# Set background of all outputs
 	* bg ~/.wallpaper.jpg fill
+
+	# Set display mode (for desktop)
+	#DP-1 mode 1920x1080@144Hz
 }
 
 #
