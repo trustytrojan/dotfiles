@@ -7,7 +7,3 @@
 - Install `pulseaudio` for the Waybar speaker/microphone volume module
 - Install [`swaylock-effects`](https://github.com/mortie/swaylock-effects) (AUR) instead of `swaylock` for a blurred lock screen
 - Install `gammastep` for night shift
-
-### What to do with the `bash.bashrc`
-
-Copy it to your `/etc` directory. The script sets a custom `bash` prompt and sets the `PATH` variable.
