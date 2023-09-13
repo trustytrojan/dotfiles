@@ -48,6 +48,18 @@
 	client.unfocused #00aaaa #808080 #eeeeee #808080
 
 #
+# SwayFX Configuration
+#
+	# Background blur for transparent windows
+	blur enable
+
+	# Rounded window corners
+	corner_radius 5
+
+	# Self-explanatory
+	default_dim_inactive 0.1
+
+#
 # Swaybar
 # `man 5 sway-bar`
 #
