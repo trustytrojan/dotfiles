@@ -17,23 +17,23 @@
 	# Despite the name, also works for non-floating windows.
 	floating_modifier $mod normal
 
-	# Start the swayidle daemon (configured in ~/.config/swayidle/config)
+	# Idle daemon
 	exec swayidle
 
-	# Night shift via gammastep daemon
+	# Location provider
+	exec /usr/lib/geoclue-2.0/demos/agent
+
+	# Night shift
 	exec gammastep
 
-	# dbus
+	# Authentication popups
 	exec dbus-update-activation-environment DISPLAY XAUTHORITY WAYLAND_DISPLAY
-
-	# polkit-dumb-agent
-	exec polkit-dumb-agent
 
 #
 # Preferences
 #
 	# Font
-	font pango: Monocode Regular 10
+	font pango: Iosevka 10
 
 	# Gap width between tiled windows in pixels
 	gaps outer 0
@@ -91,7 +91,7 @@ output {
 	* bg ~/.wallpaper.jpg fill
 
 	# Set display mode (for desktop)
-	#DP-1 mode 1920x1080@144Hz
+	DP-1 mode 1920x1080@144Hz
 }
 
 #
