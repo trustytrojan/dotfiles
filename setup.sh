@@ -9,7 +9,7 @@ if ! type yay &> /dev/null; then
 fi
 
 # Install dependencies
-yay -S --needed sway swayidle swaybg swaylock-effects waybar wofi pulseaudio pavucontrol foot grim slurp wl-clipboard dbus
+yay -S --needed sway swayidle swaybg swaylock-effects waybar wofi pulseaudio pavucontrol foot grim slurp wl-clipboard dbus ttc-iosevka
 
 # Replace .config
 rm -rf ~/.config
