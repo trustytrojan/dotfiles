@@ -24,5 +24,5 @@ cp chrome-flags.conf ~/.config
 cp code-flags.conf ~/.config
 cd ..
 
-# Copy wallpaper (you can use your own; reference .config/sway/config)
+# Copy wallpaper
 cp .wallpaper.jpg ~
