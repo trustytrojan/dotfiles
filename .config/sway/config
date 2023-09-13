@@ -101,7 +101,7 @@ output {
 	# Set background of all outputs
 	* bg ~/.wallpaper.jpg fill
 
-	# Set display mode (for desktop)
+	# Set mode for the first DisplayPort display connected
 	DP-1 mode 1920x1080@144Hz
 }
 
