@@ -11,9 +11,18 @@ fi
 # Install dependencies
 yay -S --needed swayfx swayidle swaybg swaylock-effects waybar wofi pulseaudio pavucontrol foot grim slurp wl-clipboard dbus ttc-iosevka
 
-# Replace .config
-rm -rf ~/.config
-mv .config ~
+# Copy config files
+cd .config
+cp foot/* ~/.config/foot
+cp gammastep/* ~/.config/gammastep
+cp nvim/* ~/.config/nvim
+cp sway/* ~/.config/sway
+cp swayidle/* ~/.config/swayidle
+cp swaylock/* ~/.config/swaylock
+cp waybar/* ~/.config/waybar
+cp chrome-flags.conf ~/.config
+cp code-flags.conf ~/.config
+cd ..
 
-# Move wallpaper
-mv .wallpaper.jpg ~
+# Copy wallpaper (you can use your own; reference .config/sway/config)
+cp .wallpaper.jpg ~
