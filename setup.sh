@@ -9,7 +9,7 @@ if ! type yay &> /dev/null; then
 fi
 
 # Install dependencies
-yay -S --needed swayfx swayidle swaybg swaylock-effects waybar wofi pulseaudio pavucontrol foot grim slurp wl-clipboard dbus ttc-iosevka otf-font-awesome gnome-themes-extra
+yay -S --needed swayfx swayidle swaybg swaylock-effects waybar wofi pulseaudio pavucontrol foot grim slurp wl-clipboard dbus ttc-iosevka otf-font-awesome gnome-themes-extra gammastep
 
 # Copy config files
 cd .config
