@@ -44,8 +44,8 @@
 
 	# Window border colors when focused and unfocused
 	# Read `man 5 sway` to understand this
-	client.focused #00bbbb #00aaaa #eeeeee #00aaaa
-	client.unfocused #00aaaa #808080 #eeeeee #808080
+	client.focused #00cccc #00cccc #004444 #00cccc
+	client.unfocused #00cccc #808080 #eeeeee #808080
 
 #
 # SwayFX Configuration
@@ -55,9 +55,6 @@
 
 	# Rounded window corners
 	corner_radius 5
-
-	# Self-explanatory
-	default_dim_inactive 0.1
 
 #
 # Replace swaybar with waybar
@@ -192,26 +189,22 @@ bindsym {
 #
 # Layout stuff
 #
-	# You can "split" the current object of your focus with
-	# $mod+b or $mod+v, for horizontal and vertical splits
-	# respectively.
-	$mod+b splith
-	$mod+v splitv
-	
+	# $mod+h to cut horizontally, $mod+v to cut vertically
+	# This is more intuitive for me to think about
+	$mod+h splitv
+	$mod+v splith
+
 	# Switch the current container between different layout styles
 	$mod+s layout stacking
-	$mod+w layout tabbed
-	$mod+e layout toggle split
-	
+	$mod+t layout tabbed
+	$mod+e layout default
+
 	# Make the current focus fullscreen
 	$mod+f fullscreen
-	
+
 	# Toggle the current focus between tiling and floating mode
-	$mod+Shift+space floating toggle
-	
-	# Swap focus between the tiling area and the floating area
-	$mod+space focus mode_toggle
-	
+	$mod+space floating toggle
+
 	# Move focus to the parent container
 	$mod+a focus parent
 
@@ -220,10 +213,10 @@ bindsym {
 #
 	# Sway has a "scratchpad", which is a bag of holding for windows.
 	# You can send windows there and get them back later.
-	
+
 	# Move the currently focused window to the scratchpad
 	$mod+Shift+minus move scratchpad
-	
+
 	# Show the next scratchpad window or hide the focused scratchpad window.
 	# If there are multiple scratchpad windows, this command cycles through them.
 	$mod+minus scratchpad show
