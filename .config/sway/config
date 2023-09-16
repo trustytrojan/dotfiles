@@ -47,6 +47,9 @@
 	client.focused #00cccc #00cccc #004444 #00cccc
 	client.unfocused #00cccc #808080 #eeeeee #808080
 
+	# Reduce touchpad scroll sensitivity for Chrome
+	for_window [app_id="google-chrome"] input "type:touchpad" scroll_factor 0.2
+
 #
 # SwayFX Configuration
 #
