@@ -9,7 +9,30 @@ if ! type yay &> /dev/null; then
 fi
 
 # Install dependencies
-yay -S --needed swayfx swayidle swaybg swaylock-effects waybar wofi pulseaudio pavucontrol foot grim slurp wl-clipboard dbus ttc-iosevka otf-font-awesome gnome-themes-extra gammastep polkit-gnome qt5-wayland
+yay -S --needed \
+	# Environment
+	swayfx swayidle swaybg swaylock-effects waybar wofi wl-clipboard foot otf-font-awesome \
+ 
+	# Screenshot utilities
+	grim slurp
+
+	# Dark theme for GTK apps
+	gnome-themes-extra \
+
+	# Font
+	ttc-iosevka \
+
+	# Audio
+	pulseaudio pavucontrol \
+
+	# Authentication popups
+	dbus polkit-gnome \
+
+	# Night light
+	gammastep \
+
+	# Qt support
+	qt5-wayland
 
 # Copy config files
 cd .config
