@@ -29,9 +29,6 @@
 	# Authentication popups
 	exec dbus-update-activation-environment DISPLAY XAUTHORITY WAYLAND_DISPLAY
 
-	# GNOME Polkit frontend
-	exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-
 #
 # Preferences
 #
@@ -122,8 +119,8 @@ bindsym {
 	# Start a terminal
 	$mod+Return exec $term
 
-	# Kill focused window
-	$mod+Shift+q kill
+	# Close focused window
+	$mod+q kill
 
 	# Start your launcher
 	$mod+d exec $menu
