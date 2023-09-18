@@ -10,11 +10,17 @@ fi
 
 # Install dependencies
 yay -S --needed \
-	# Environment
-	swayfx swayidle swaybg swaylock-effects waybar wofi wl-clipboard foot otf-font-awesome \
- 
+	# Sway environment
+	swayfx swayidle swaybg swaylock-effects wofi wl-clipboard \
+
+	# Terminal
+	foot \
+
+	# Swaybar replacement
+	waybar otf-font-awesome \
+
 	# Screenshot utilities
-	grim slurp
+	grim slurp \
 
 	# Dark theme for GTK apps
 	gnome-themes-extra \
