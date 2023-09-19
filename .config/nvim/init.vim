@@ -1,7 +1,7 @@
 " Use 4-space soft tabs
 set tabstop=4
 set shiftwidth=4
-set expandtab
+set noexpandtab
 
 " Colors
 hi Identifier ctermfg=117
