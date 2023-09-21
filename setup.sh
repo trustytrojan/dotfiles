@@ -8,8 +8,8 @@ if ! type yay &> /dev/null; then
 	rm -rf yay-bin
 fi
 
-# Install dependencies
-yay -S --needed swayfx swayidle swaybg swaylock-effects wofi wl-clipboard foot waybar otf-font-awesome grim slurp gnome-themes-extra ttc-iosevka pulseaudio pavucontrol dbus polkit-gnome gammastep qt5-wayland
+# Install dependencies and other nice packages
+yay -S --needed swayfx swayidle swaybg swaylock-effects wofi wl-clipboard foot waybar otf-font-awesome grim slurp gnome-themes-extra ttc-iosevka pulseaudio pavucontrol dbus polkit-gnome gammastep qt5-wayland libnotify htop nvtop brightnessctl
 
 # Copy config files
 cd .config
