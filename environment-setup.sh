@@ -9,7 +9,12 @@ if ! type yay &> /dev/null; then
 fi
 
 # Install dependencies and other nice packages
-yay -S --needed swayfx swayidle swaybg swaylock-effects wofi wl-clipboard foot waybar otf-font-awesome grim slurp gnome-themes-extra ttc-iosevka pulseaudio pavucontrol dbus polkit-gnome gammastep qt5-wayland libnotify htop nvtop brightnessctl
+yay -S --needed swayfx swayidle swaybg swaylock-effects wofi wl-clipboard foot waybar otf-font-awesome grim slurp gnome-themes-extra ttc-iosevka pulseaudio pavucontrol dbus polkit-gnome gammastep qt5-wayland libnotify htop nvtop
+
+# If this PC is a laptop, install brightnessctl
+if [ -d /proc/acpi/button/lid ]; then
+	yay -S --needed brightnessctl
+fi
 
 # Copy config files
 cd .config
@@ -21,7 +26,6 @@ cp -r swayidle ~/.config
 cp -r swaylock ~/.config
 cp -r waybar ~/.config
 cp chrome-flags.conf ~/.config
-cp code-flags.conf ~/.config
 cd ..
 
 # Copy wallpaper
