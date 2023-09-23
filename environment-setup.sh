@@ -26,6 +26,7 @@ cp -r swayidle ~/.config
 cp -r swaylock ~/.config
 cp -r waybar ~/.config
 cp chrome-flags.conf ~/.config
+cp code-flags.conf ~/.config
 cd ..
 
 # Copy wallpaper
