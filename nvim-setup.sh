@@ -5,8 +5,8 @@ if ! type nvim &> /dev/null; then
 fi
 
 read -p "Which config would you like?
-1: Hard 4-space tabs.
-2: Choice 1 plus a VSCode-like experience
+1: Hard 4-space tabs
+2: VSCode-like experience
 Enter choice: " choice
 
 case "$choice" in
