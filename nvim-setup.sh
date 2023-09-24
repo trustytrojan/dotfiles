@@ -11,7 +11,7 @@ Enter choice: " choice
 
 case "$choice" in
 "1")
-	cp .config/nvim/simple.vim ~/.config/nvim/init.vim
+	cp .config/nvim/hard-tabs.vim ~/.config/nvim/init.vim
 	;;
 "2")
 	cp .config/nvim/vscode.vim ~/.config/nvim/init.vim
