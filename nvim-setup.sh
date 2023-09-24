@@ -9,6 +9,8 @@ read -p "Which config would you like?
 2: VSCode-like experience
 Enter choice: " choice
 
+mkdir -p ~/.config/nvim
+
 case "$choice" in
 "1")
 	cp .config/nvim/hard-tabs.vim ~/.config/nvim/init.vim
@@ -19,6 +21,8 @@ case "$choice" in
 	sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 	# Install plugins
 	nvim -c PlugInstall
+	;;
 *)
 	echo "Choice not recognized. Skipping Neovim configuration."
+	;;
 esac
