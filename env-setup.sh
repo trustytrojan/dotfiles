@@ -1,6 +1,8 @@
+# Environment setup.
+
 # Install yay if needed
 if ! type yay &> /dev/null; then
-	sudo pacman -S --needed git base-devel
+	sudo pacman -Sy --needed git base-devel
 	git clone https://aur.archlinux.org/yay-bin.git
 	cd yay-bin
 	makepkg -si
@@ -8,12 +10,12 @@ if ! type yay &> /dev/null; then
 	rm -rf yay-bin
 fi
 
-# Install dependencies and other nice packages
-yay -S --needed swayfx swayidle swaybg swaylock-effects wofi wl-clipboard foot waybar otf-font-awesome grim slurp gnome-themes-extra ttc-iosevka pulseaudio pavucontrol dbus polkit-gnome gammastep qt5-wayland libnotify htop nvtop
+# Install dependencies
+yay -Sy --needed swayfx swayidle swaybg swaylock-effects wofi wl-clipboard foot waybar otf-font-awesome grim slurp gnome-themes-extra ttc-iosevka pulseaudio pavucontrol dbus polkit-gnome gammastep qt5-wayland libnotify
 
 # If this PC is a laptop, install brightnessctl
 if [ -d /proc/acpi/button/lid ]; then
-	yay -S --needed brightnessctl
+	yay -Sy --needed brightnessctl
 fi
 
 # Copy config files
