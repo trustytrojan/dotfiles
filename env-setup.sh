@@ -4,7 +4,7 @@
 source install-yay.sh
 
 # Install dependencies
-yay -Sy --needed swayfx swayidle swaybg swaylock-effects wofi wl-clipboard foot waybar otf-font-awesome grim slurp gnome-themes-extra ttc-iosevka pulseaudio pavucontrol dbus polkit-gnome gammastep qt5-wayland libnotify
+yay -Sy --needed swayfx swayidle swaybg swaylock-effects wofi wl-clipboard foot waybar otf-font-awesome grim slurp gnome-themes-extra ttc-iosevka pulseaudio pavucontrol dbus polkit-gnome gammastep libnotify qt5-wayland
 
 # If this PC is a laptop, install brightnessctl
 if [ -d /proc/acpi/button/lid ]; then
@@ -24,5 +24,5 @@ cd ..
 # Copy wallpaper
 cp .wallpaper.jpg ~
 
-# Set GTK theme to Adwaita-dark
+# Set dark theme for GTK3 in Wayland
 gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
