@@ -29,9 +29,6 @@
 	# Authentication popups
 	exec dbus-update-activation-environment DISPLAY XAUTHORITY WAYLAND_DISPLAY
 
-	# GNOME Polkit frontend
-	exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-
 #
 # Preferences
 #
@@ -192,17 +189,10 @@ bindsym {
 #
 # Layout stuff
 #
-	# $mod+h to cut horizontally, $mod+v to cut vertically
-	# This is more intuitive for me to think about
-	$mod+h splitv
-	$mod+v splith
+	# Cycles the layout mode of the focused container
+	$mod+Shift+l layout toggle all
 
-	# Switch the current container between different layout styles
-	$mod+s layout stacking
-	$mod+t layout tabbed
-	$mod+e layout default
-
-	# Make the current focus fullscreen
+	# Make the focused window fullscreen
 	$mod+f fullscreen
 
 	# Toggle the current focus between tiling and floating mode
