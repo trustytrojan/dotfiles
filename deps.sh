@@ -1,5 +1,5 @@
 # Install yay if needed
-source install-yay.sh
+source yay.sh
 
 # Install dependencies
 yay -Sy --needed swayfx swayidle swaybg swaylock-effects wofi wl-clipboard foot waybar otf-font-awesome grim slurp gnome-themes-extra ttc-iosevka pulseaudio pavucontrol dbus polkit-gnome gammastep libnotify qt5-wayland wireplumber
