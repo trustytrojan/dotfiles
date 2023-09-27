@@ -26,8 +26,15 @@
 	# Night light / Color temperature shifting daemon
 	exec gammastep
 
-	# Authentication popups
+	# Tell dbus that this is a Wayland session
 	exec dbus-update-activation-environment DISPLAY XAUTHORITY WAYLAND_DISPLAY
+
+	# GNOME Polkit frontend for authentication popups
+	exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+	# Audio support for more than one application?
+	exec pipewire
+	exec wireplumber
 
 #
 # Preferences
@@ -189,10 +196,17 @@ bindsym {
 #
 # Layout stuff
 #
-	# Cycles the layout mode of the focused container
-	$mod+Shift+l layout toggle all
+	# $mod+h to cut horizontally, $mod+v to cut vertically
+	# This is more intuitive for me to think about
+	$mod+h splitv
+	$mod+v splith
 
-	# Make the focused window fullscreen
+	# Switch the current container between different layout styles
+	$mod+s layout stacking
+	$mod+t layout tabbed
+	$mod+e layout default
+
+	# Make the current focus fullscreen
 	$mod+f fullscreen
 
 	# Toggle the current focus between tiling and floating mode
