@@ -64,12 +64,9 @@ button:hover {
 #network,
 #pulseaudio,
 #wireplumber,
-#custom-media,
 #tray,
 #mode,
-#idle_inhibitor,
-#scratchpad,
-#mpd {
+#scratchpad {
     padding: 0 10px;
     color: #eeeeee;
 	background-color: #007777;
