@@ -7,4 +7,4 @@ fi
 ./generate-rules.sh | sudo tee /etc/udev/rules.d/99-opentabletdriver.rules
 sudo udevadm control --reload-rules
 cd ..
-# Doesn't delete the repo just in case the script did not work
+echo "Make sure to delete the OTD repository once everything is working."
