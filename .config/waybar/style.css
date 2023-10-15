@@ -62,6 +62,7 @@ button:hover {
 #temperature,
 #backlight,
 #network,
+#pulseaudio,
 #wireplumber,
 #tray,
 #mode,
@@ -110,6 +111,11 @@ label:focus {
 #network.disconnected {
     background-color: #f53c3c;
 	color: #eeeeee
+}
+
+#pulseaudio.muted {
+    background-color: #90b1b1;
+    color: #2a5c45;
 }
 
 #temperature.critical {
