@@ -26,15 +26,9 @@
 	# Night light / Color temperature shifting daemon
 	exec gammastep
 
-	# Tell dbus that this is a Wayland session
+	# Authentication popups
 	exec dbus-update-activation-environment DISPLAY XAUTHORITY WAYLAND_DISPLAY
-
-	# GNOME Polkit frontend for authentication popups
 	exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-
-	# Audio support for more than one application?
-	exec pipewire
-	exec wireplumber
 
 #
 # Preferences
@@ -106,7 +100,7 @@ output {
 	* bg ~/.wallpaper.jpg fill
 
 	# Set mode for the first DisplayPort display connected
-	DP-1 mode 1920x1080@144Hz
+	#DP-1 mode 1920x1080@144Hz
 }
 
 #
@@ -121,7 +115,7 @@ bindsym {
 	$mod+l exec swaylock
 
 	# Screenshot (Print = "print screen" key)
-	Print exec grim -g "$(slurp)" - | wl-copy
+	Print exec [ ! $(pidof slurp) ] && grim -g "$(slurp)" - | wl-copy
 
 	# Start a terminal
 	$mod+Return exec $term
@@ -196,17 +190,14 @@ bindsym {
 #
 # Layout stuff
 #
-	# $mod+h to cut horizontally, $mod+v to cut vertically
-	# This is more intuitive for me to think about
-	$mod+h splitv
-	$mod+v splith
+	# Changes where a new window appears when tiling
+	$mod+h splith
+	$mod+v splitv
 
-	# Switch the current container between different layout styles
-	$mod+s layout stacking
-	$mod+t layout tabbed
-	$mod+e layout default
+	# Toggle layout modes for the focused container
+	$mod+Shift+l layout toggle all
 
-	# Make the current focus fullscreen
+	# Make the focused window fullscreen
 	$mod+f fullscreen
 
 	# Toggle the current focus between tiling and floating mode
