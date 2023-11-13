@@ -114,8 +114,12 @@ bindsym {
 	# Lock screen (configured in ~/.config/swaylock/config)
 	$mod+l exec swaylock
 
-	# Screenshot (Print = "print screen" key)
+	# FYI: (Print = "print screen" key)
+	# Screenshot (copy to clipboard)
 	Print exec [ ! $(pidof slurp) ] && grim -g "$(slurp)" - | wl-copy
+
+	# Screenshot (save to file)
+	Ctrl+Print exec [ ! $(pidof slurp) ] && grim -g "$(slurp)"
 
 	# Start a terminal
 	$mod+Return exec $term
