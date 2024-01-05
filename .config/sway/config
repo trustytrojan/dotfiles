@@ -200,10 +200,10 @@ bindsym {
 	# Tabbed mode (I use this frequently)
 	$mod+t layout tabbed
 
-	# Toggle all layout modes for the focused container (or the whole workspace if no containers exist)
+	# Toggle all layout modes for the current focus
 	$mod+Shift+l layout toggle all
 
-	# Make the focused window fullscreen
+	# Make the current focus fullscreen
 	$mod+f fullscreen
 
 	# Toggle the current focus between tiling and floating mode
