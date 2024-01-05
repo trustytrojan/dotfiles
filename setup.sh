@@ -1,4 +1,4 @@
-# Copy bashrc
+# Copy .bashrc
 sudo cp .bashrc /etc/bash.bashrc
 
 # Install options for pacman/yay
