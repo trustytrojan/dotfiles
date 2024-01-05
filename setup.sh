@@ -1,11 +1,14 @@
+# Copy bashrc
+sudo cp .bashrc /etc/bash.bashrc
+
+# Install options for pacman/yay
 OPTS="-Sy --needed"
 
+# Copies each provided config folder from .config to ~/.config
 function copy_config {
-	cd .config
 	for arg in $@; do
-		cp -r $arg ~/.config
+		cp -r .config/$arg ~/.config
 	done
-	cd ..
 }
 
 # Install shared dependencies
