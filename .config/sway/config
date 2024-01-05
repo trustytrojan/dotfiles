@@ -32,7 +32,7 @@
 # Preferences
 #
 	# Font
-	font pango: Iosevka 10
+	font pango:Iosevka 10
 
 	# Gap width between tiled windows in pixels
 	gaps outer 0
@@ -56,7 +56,7 @@
 	corner_radius 5
 
 #
-# Replace swaybar with waybar
+# Bar command
 #
 bar {
 	swaybar_command waybar
@@ -73,12 +73,12 @@ input {
 	}
 
 	"type:pointer" {
-		# Disable pointer acceleration
+		# Disable mouse acceleration
 		accel_profile flat
 	}
 
 	"type:touchpad" {
-		# Disable pointer acceleration
+		# Disable mouse acceleration
 		accel_profile flat
 
 		# Right-click when two fingers press
@@ -102,7 +102,7 @@ output {
 }
 
 #
-# Keybind configuration
+# Keybinds
 #
 
 bindsym {
@@ -112,7 +112,8 @@ bindsym {
 	# Lock screen (configured in ~/.config/swaylock/config)
 	$mod+l exec swaylock
 
-	# FYI: (Print = "print screen" key)
+	# FYI: the "PrtSc" aka "print screen" key sends "Print" to sway
+
 	# Screenshot (copy to clipboard)
 	Print exec [ ! $(pidof slurp) ] && grim -g "$(slurp)" - | wl-copy
 
@@ -156,7 +157,7 @@ bindsym {
 	$mod+Up focus up
 	$mod+Right focus right
 
-	# Move the focused window with the same, but add Shift
+	# Move the focused window around
 	$mod+Shift+Left move left
 	$mod+Shift+Down move down
 	$mod+Shift+Up move up
@@ -192,11 +193,14 @@ bindsym {
 #
 # Layout stuff
 #
-	# Changes where a new window appears when tiling
+	# Split modes
 	$mod+h splith
 	$mod+v splitv
 
-	# Toggle layout modes for the focused container
+	# Tabbed mode (I use this frequently)
+	$mod+t layout tabbed
+
+	# Toggle all layout modes for the focused container (or the whole workspace if no containers exist)
 	$mod+Shift+l layout toggle all
 
 	# Make the focused window fullscreen
@@ -204,6 +208,10 @@ bindsym {
 
 	# Toggle the current focus between tiling and floating mode
 	$mod+space floating toggle
+
+	# I removed the bind for `focus move_toggle`, since I rarely need it.
+	# I just use my mouse to move focus between tiled and floating instead, since
+	# if you're dealing with floating windows, you're gonna be using your mouse.
 
 	# Move focus to the parent container
 	$mod+a focus parent
