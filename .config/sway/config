@@ -20,10 +20,8 @@
 	# Idle daemon
 	exec swayidle
 
-	# Location provider for gammastep
+	# gammastep + geoclue
 	exec /usr/lib/geoclue-2.0/demos/agent
-
-	# Night light / Color temperature shifting daemon
 	exec gammastep
 
 	# Authentication popups

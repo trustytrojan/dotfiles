@@ -1,26 +1,47 @@
-# Install yay if needed
-source install-yay.sh
+OPTS="-Sy --needed"
 
-# Install dependencies
-yay -Sy --needed swayfx swayidle swaybg swaylock-effects wofi wl-clipboard foot waybar otf-font-awesome grim slurp gnome-themes-extra ttc-iosevka dbus polkit-gnome gammastep libnotify qt5-wayland qt6-wayland pipewire pipewire-alsa pipewire-pulse wireplumber qpwgraph
+function copy_config {
+	cd .config
+	for arg in $@; do
+		cp -r $arg ~/.config
+	done
+	cd ..
+}
 
-# If this PC is a laptop, install brightnessctl
-if [ -d /proc/acpi/button/lid ]; then
-	yay -Sy --needed brightnessctl
+# Install shared dependencies
+sudo pacman $OPTS gammastep gnome-themes-extra ttc-iosevka dbus polkit-gnome libnotify pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber qpwgraph
+
+# Copy shared configs
+copy_config gammastep gtk-3.0
+
+# Determine window manager
+read -p "sway or i3? " wm
+
+if [ $wm == "sway" ]; then
+	# Require yay installation
+	if ! type yay >/dev/null; then
+		echo "yay is not installed. Aborting."
+		exit 1
+	fi
+	
+	# Install sway dependencies
+	yay $OPTS swayfx swayidle swaybg swaylock-effects wofi wl-clipboard foot waybar otf-font-awesome grim slurp
+
+	# Copy sway configs
+	copy_config foot sway swayidle swaylock waybar
+
+	# Set dark theme
+	gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
+elif [ $wm == "i3" ]; then
+	# Install i3 dependencies
+	sudo pacman $OPTS i3 xorg-xserver xorg-xinit feh
+
+	# Copy configs
+	copy_config i3
+else
+	echo "Unknown window manager '$wm'. Aborting."
+	exit 1
 fi
-
-# Copy config files
-cd .config
-cp -r foot ~/.config
-cp -r gammastep ~/.config
-cp -r sway ~/.config
-cp -r swayidle ~/.config
-cp -r swaylock ~/.config
-cp -r waybar ~/.config
-cd ..
 
 # Copy wallpaper
 cp .wallpaper.jpg ~
-
-# Set dark theme for GTK3 in Wayland
-gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
