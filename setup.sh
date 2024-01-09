@@ -44,9 +44,6 @@ elif [ $wm == "i3" ]; then
  	cp .Xdefaults ~
   	cp .xinitrc ~
    	chmod u+x ~/.xinitrc
-
- 	# Make .xinitrc
-  	echo -e "#!/bin/sh"
 else
 	echo "Unknown window manager '$wm'. Aborting."
 	exit 1
