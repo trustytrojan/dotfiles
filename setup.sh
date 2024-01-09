@@ -26,7 +26,7 @@ if [ $wm == "sway" ]; then
 		echo "yay is not installed. Aborting."
 		exit 1
 	fi
-	
+
 	# Install sway dependencies
 	yay $OPTS swayfx swayidle swaybg swaylock-effects wofi wl-clipboard foot waybar otf-font-awesome grim slurp
 
@@ -37,10 +37,13 @@ if [ $wm == "sway" ]; then
 	gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
 elif [ $wm == "i3" ]; then
 	# Install i3 dependencies
-	sudo pacman $OPTS i3 xorg-xserver xorg-xinit feh
+	sudo pacman $OPTS i3 xorg-xserver xorg-xinit feh xterm
 
 	# Copy configs
 	copy_config i3
+
+ 	# Make .xinitrc
+  	echo -e "#!/bin/sh"
 else
 	echo "Unknown window manager '$wm'. Aborting."
 	exit 1
