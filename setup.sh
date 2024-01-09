@@ -12,7 +12,7 @@ function copy_config {
 }
 
 # Install shared dependencies
-sudo pacman $OPTS gammastep gnome-themes-extra ttc-iosevka dbus polkit-gnome libnotify pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber qpwgraph
+sudo pacman $OPTS gammastep gnome-themes-extra ttc-iosevka dbus polkit-gnome libnotify pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber qpwgraph pavucontrol
 
 # Copy shared configs
 copy_config gammastep gtk-3.0
