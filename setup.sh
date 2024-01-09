@@ -39,8 +39,11 @@ elif [ $wm == "i3" ]; then
 	# Install i3 dependencies
 	sudo pacman $OPTS i3 xorg-xserver xorg-xinit feh xterm
 
-	# Copy configs
+	# Copy configs and X files
 	copy_config i3
+ 	cp .Xdefaults ~
+  	cp .xinitrc ~
+   	chmod u+x ~/.xinitrc
 
  	# Make .xinitrc
   	echo -e "#!/bin/sh"
