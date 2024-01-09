@@ -37,7 +37,7 @@ if [ $wm == "sway" ]; then
 	gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
 elif [ $wm == "i3" ]; then
 	# Install i3 dependencies
-	sudo pacman $OPTS i3 xorg-xserver xorg-xinit feh xterm
+	sudo pacman $OPTS i3 xorg-server xorg-xinit feh xterm
 
 	# Copy configs and X files
 	copy_config i3
