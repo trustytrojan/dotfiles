@@ -4,7 +4,7 @@ set shiftwidth=4
 set noexpandtab
 
 """ End here if vim-plug is absent
-if ! isdirectory(getenv('HOME') . '/.local/share/nvim/plugged')
+if ! filereadable(getenv('HOME') . '/.local/share/nvim/site/autoload/plug.vim')
 	finish
 endif
 
