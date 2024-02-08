@@ -1,16 +1,32 @@
 function copy_config {
 	for arg in $@; do
+ 		echo "Copying $arg config"
 		cp -r .config/$arg ~/.config
 	done
 }
 
 PACMAN_OPTS="-Sy --needed"
 
+echo "Installing system-wide bashrc"
+sudo cp .bashrc /etc/bash.bashrc
+
+copy_config nvim
+
+read -p "Install pipewire and wireplumber? [Y/n] " pw
+[ $pw = n ] || {
+	echo "Installing pipewire and wireplumber"
+	sudo pacman $PACMAN_OPTS pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber
+}
+
+read -p "Sway, i3, or no wm? " wm
+[ $wm = sway || $wm = i3 ] || exit
+
 # Sway/i3 Shared dependencies
-sudo pacman $PACMAN_OPTS gammastep gnome-themes-extra ttc-iosevka dbus polkit-gnome libnotify pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber qpwgraph pavucontrol
+sudo pacman $PACMAN_OPTS gammastep gnome-themes-extra ttc-iosevka dbus polkit-gnome libnotify qpwgraph pavucontrol
 
 # Sway/i3 shared configs
 copy_config gammastep gtk-3.0
+echo "export GTK_THEME=Adwaita-dark" >> ~/.bashrc
 
 # Determine window manager
 read -p "Sway or i3? " wm
@@ -40,9 +56,6 @@ case $wm in
 	 	cp .Xdefaults ~
 	  	cp .xinitrc ~
 	   	chmod u+x ~/.xinitrc
-	*)
-		echo "Unknown window manager '$wm'. Aborting."
-		exit 1
 esac
 
 # Copy wallpaper
