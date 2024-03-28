@@ -148,10 +148,12 @@ bindsym {
 
 	# Screen record
 	Alt+Print exec wf-recorder \
+		-o "swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name'" \
 		-a "$(pactl info | awk '/Default Sink:/ {print $3}').monitor" \
 		-f ~/recording_$(date +"%Y-%m-%d_%H:%M:%S.mp4")
 	Alt+Shift+Print exec wf-recorder \
 		-g "$(slurp)" \
+		-o "swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name'" \
 		-a "$(pactl info | awk '/Default Sink:/ {print $3}').monitor" \
 		-f ~/recording_$(date +"%Y-%m-%d_%H:%M:%S.mp4")
 	Alt+BackSpace exec killall \
