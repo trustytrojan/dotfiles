@@ -112,14 +112,6 @@ bindsym {
 	# Lock screen (configured in ~/.config/swaylock/config)
 	$mod+l exec swaylock
 
-	# FYI: the "PrtSc" aka "print screen" key sends "Print" to sway
-
-	# Screenshot (copy to clipboard)
-	Print exec [ ! $(pidof slurp) ] && grim -g "$(slurp)" - | wl-copy
-
-	# Screenshot (save to file)
-	Ctrl+Print exec [ ! $(pidof slurp) ] && grim -g "$(slurp)"
-
 	# Start a terminal
 	$mod+Return exec $term
 
@@ -147,6 +139,27 @@ bindsym {
 
 	# Lock when laptop lid closes
 	XF86ScreenSaver exec swaylock
+
+	# Screenshot (copy to clipboard)
+	Print exec [ ! $(pidof slurp) ] && grim -g "$(slurp)" - | wl-copy
+
+	# Screenshot (save to file)
+	Ctrl+Print exec [ ! $(pidof slurp) ] && grim -g "$(slurp)"
+
+	# Screen record
+	bindsym Alt+Print \
+		exec wf-recorder \
+			-a "$(pactl info | awk '/Default Sink:/ {print $3}').monitor" \
+			-f ~/recording_$(date +"%Y-%m-%d_%H:%M:%S.mp4")
+	bindsym Alt+Shift+Print \
+		exec wf-recorder \
+			-g "$(slurp)" \
+			-a "$(pactl info | awk '/Default Sink:/ {print $3}').monitor" \
+			-f ~/recording_$(date +"%Y-%m-%d_%H:%M:%S.mp4")
+	bindsym Alt+BackSpace \
+		exec killall \
+			-s SIGINT \
+			wf-recorder
 
 #
 # Window focusing and moving
