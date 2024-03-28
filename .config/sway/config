@@ -147,19 +147,16 @@ bindsym {
 	Ctrl+Print exec [ ! $(pidof slurp) ] && grim -g "$(slurp)"
 
 	# Screen record
-	bindsym Alt+Print \
-		exec wf-recorder \
-			-a "$(pactl info | awk '/Default Sink:/ {print $3}').monitor" \
-			-f ~/recording_$(date +"%Y-%m-%d_%H:%M:%S.mp4")
-	bindsym Alt+Shift+Print \
-		exec wf-recorder \
-			-g "$(slurp)" \
-			-a "$(pactl info | awk '/Default Sink:/ {print $3}').monitor" \
-			-f ~/recording_$(date +"%Y-%m-%d_%H:%M:%S.mp4")
-	bindsym Alt+BackSpace \
-		exec killall \
-			-s SIGINT \
-			wf-recorder
+	Alt+Print exec wf-recorder \
+		-a "$(pactl info | awk '/Default Sink:/ {print $3}').monitor" \
+		-f ~/recording_$(date +"%Y-%m-%d_%H:%M:%S.mp4")
+	Alt+Shift+Print exec wf-recorder \
+		-g "$(slurp)" \
+		-a "$(pactl info | awk '/Default Sink:/ {print $3}').monitor" \
+		-f ~/recording_$(date +"%Y-%m-%d_%H:%M:%S.mp4")
+	Alt+BackSpace exec killall \
+		-s SIGINT \
+		wf-recorder
 
 #
 # Window focusing and moving
