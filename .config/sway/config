@@ -46,6 +46,8 @@
 	client.focused #00cccc #00cccc #004444 #00cccc
 	client.unfocused #00cccc #808080 #eeeeee #808080
 
+	# Startup applications (PC dependent, fill out yourself)
+
 #
 # SwayFX Configuration
 #
@@ -97,8 +99,7 @@ output {
 	# Set background of all outputs
 	* bg ~/.wallpaper.jpg fill
 
-	# Set mode for the first DisplayPort display connected
-	#DP-1 mode 1920x1080@144Hz
+	# External display modes (PC dependent, fill out yourself)
 }
 
 #
@@ -146,16 +147,16 @@ bindsym {
 	# Screenshot (save to file)
 	Ctrl+Print exec [ ! $(pidof slurp) ] && grim -g "$(slurp)"
 
-	# Screen record
+	# Screen record the focused display
 	Alt+Print exec wf-recorder \
+		-r 60 \
 		-o "$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')" \
-		-a "$(pactl info | awk '/Default Sink:/ {print $3}').monitor" \
+		-a"$(pactl info | awk '/Default Sink:/ {print $3}').monitor" \
 		-f ~/recording_$(date +"%Y-%m-%d_%H:%M:%S.mp4")
-	Alt+Shift+Print exec wf-recorder \
-		-g "$(slurp)" \
-		-o "$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')" \
-		-a "$(pactl info | awk '/Default Sink:/ {print $3}').monitor" \
-		-f ~/recording_$(date +"%Y-%m-%d_%H:%M:%S.mp4")
+
+	# Screen record a select area of the focused display (unimplemented)
+
+	# Kill all screen recorders
 	Alt+BackSpace exec killall \
 		-s SIGINT \
 		wf-recorder
