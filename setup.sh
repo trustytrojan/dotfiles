@@ -24,7 +24,7 @@ read -p "Sway, i3, or none? " wm
 # Install shared dependencies
 sudo pacman $PACMAN_OPTS gammastep gnome-themes-extra ttc-iosevka dbus polkit-gnome libnotify qpwgraph pavucontrol
 
-# Sway/i3 shared configs
+# Install shared configs
 copy_config gammastep gtk-3.0
 echo "export GTK_THEME=Adwaita-dark" >> ~/.bashrc
 
