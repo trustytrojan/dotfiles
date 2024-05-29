@@ -48,7 +48,7 @@ case $wm in
 
 	i3)
 		# Install i3 dependencies
-		sudo pacman $PACMAN_OPTS i3 xorg-server xorg-xinit feh xterm rofi
+		sudo pacman $PACMAN_OPTS i3 xorg-server xorg-drivers xorg-xinit feh xterm rofi
 
 		# Copy configs and X files
 		copy_config i3
