@@ -29,5 +29,3 @@ alias ip="ip -c"
 
 # Environment variables
 export PATH="/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin"
-export QT_QPA_PLATFORM=wayland
-export MOZ_ENABLE_WAYLAND=1
