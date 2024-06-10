@@ -14,7 +14,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'gmr458/vscode_modern_theme.nvim'
 call plug#end()
 
-""" Syntax coloring
+""" Colors
 colorscheme vscode_modern
 hi Normal guibg=#00000000
 hi StatusLine guifg=#cccccc guibg=#005555
