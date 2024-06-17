@@ -38,7 +38,7 @@ case $wm in
 		fi
 
 		# Install sway dependencies
-		yay $PACMAN_OPTS swayfx swayidle swaybg swaylock-effects wofi wl-clipboard foot waybar otf-font-awesome grim slurp
+		yay $PACMAN_OPTS swayfx swayidle swaybg swaylock-effects wofi wl-clipboard foot waybar otf-font-awesome grim slurp xdg-desktop-portal-wlr
 
 		# Copy sway configs
 		copy_config foot sway swayidle swaylock waybar mako
