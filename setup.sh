@@ -41,7 +41,7 @@ case $wm in
 		yay $PACMAN_OPTS swayfx swayidle swaybg swaylock-effects wofi wl-clipboard foot waybar otf-font-awesome grim slurp
 
 		# Copy sway configs
-		copy_config foot sway swayidle swaylock waybar
+		copy_config foot sway swayidle swaylock waybar mako
 
 		# Set dark theme
 		gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
