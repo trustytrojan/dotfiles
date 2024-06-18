@@ -24,10 +24,10 @@
 	exec /usr/lib/geoclue-2.0/demos/agent
 	exec gammastep
 
-	# Authentication popups
+	# Polkit authentication popups
 	exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
-	# xdg-desktop-portal-wlr
+	# xdg-desktop-portal-wlr (make sure to enable xdg-desktop-portal.service and xdg-desktop-portal-wlr.service)
 	exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 	exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
@@ -102,7 +102,7 @@ output {
 	# Set background of all outputs
 	* bg ~/.wallpaper.jpg fill
 
-	# External display modes (PC dependent, fill out yourself)
+	# Custom display modes (PC dependent, fill out yourself)
 }
 
 #
@@ -128,41 +128,52 @@ bindsym {
 	# Reload the configuration file
 	$mod+Shift+c reload
 
-	# Exit sway (logs you out of your Wayland session)
+	# Exit sway
 	$mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
-	# Volume and mute key bindings using pulseaudio
+	# Volume up/down and mute keys
 	XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 	XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 	XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 	XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
-	# Brightness key bindings using brightnessctl
+	# Brightness up/down keys
 	XF86MonBrightnessUp exec brightnessctl s +5%
 	XF86MonBrightnessDown exec brightnessctl s 5%-
 
 	# Lock when laptop lid closes
 	XF86ScreenSaver exec swaylock
 
-	# Screenshot (copy to clipboard)
+	# Screenshot an area, copy to clipboard
 	Print exec [ ! $(pidof slurp) ] && grim -g "$(slurp)" - | wl-copy
 
-	# Screenshot (save to file)
+	# Screenshot an area, save to file
 	Ctrl+Print exec [ ! $(pidof slurp) ] && grim -g "$(slurp)"
 
-	# Screen record the focused display
-	Alt+Print exec wf-recorder \
-		-r 60 \
-		-o "$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')" \
-		-a"$(pactl info | awk '/Default Sink:/ {print $3}').monitor" \
-		-f ~/recording_$(date +"%Y-%m-%d_%H:%M:%S.mp4")
+	# Screenshot the whole screen, copy to clipboard
+	Shift+Print exec [ ! $(pidof slurp) ] && grim - | wl-copy
 
-	# Screen record a select area of the focused display (unimplemented)
+	# Screenshot the whole screen, save to file
+	Ctrl+Shift+Print exec [ ! $(pidof slurp) ] && grim
+
+	# Screen record the focused display
+	# If you have a DGPU, try adding `-c h264_vaapi` for hardware encoding
+	Alt+Print exec wf-recorder \
+		--framerate 60 \
+		--output "$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')" \
+		--audio="$(pactl info | awk '/Default Sink:/ {print $3}').monitor" \
+		--file ~/recording_$(date +'%Y-%m-%d_%H:%M:%S.mp4')
+
+	# Screen record an area of the focused display
+	Alt+Shift+Print exec wf-recorder \
+		--geometry "$(slurp)" \
+		--framerate 60 \
+		--output "$(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name')" \
+		--audio="$(pactl info | awk '/Default Sink:/ {print $3}').monitor" \
+		--file ~/recording_$(date +'%Y-%m-%d_%H:%M:%S.mp4')
 
 	# Kill all screen recorders
-	Alt+BackSpace exec killall \
-		-s SIGINT \
-		wf-recorder
+	Alt+BackSpace exec killall -s SIGINT wf-recorder
 
 #
 # Window focusing and moving
@@ -209,11 +220,11 @@ bindsym {
 #
 # Layout stuff
 #
-	# Split modes
+	# Split modes (determines the split direction when a new window opens)
 	$mod+h splith
 	$mod+v splitv
 
-	# Tabbed mode (I use this frequently)
+	# Tabbed mode
 	$mod+t layout tabbed
 
 	# Toggle all layout modes for the current focus
@@ -224,10 +235,6 @@ bindsym {
 
 	# Toggle the current focus between tiling and floating mode
 	$mod+space floating toggle
-
-	# I removed the bind for `focus move_toggle`, since I rarely need it.
-	# I just use my mouse to move focus between tiled and floating instead, since
-	# if you're dealing with floating windows, you're gonna be using your mouse.
 
 	# Move focus to the parent container
 	$mod+a focus parent
@@ -254,15 +261,11 @@ bindsym {
 
 # When mode is "resize" these keybinds will be active
 mode "resize" bindsym {
-	# left will shrink the containers width
-	# right will grow the containers width
-	# up will shrink the containers height
-	# down will grow the containers height
-
+	# Shrink/grow dimensions
 	Left resize shrink width 10px
+	Right resize grow width 10px
 	Down resize grow height 10px
 	Up resize shrink height 10px
-	Right resize grow width 10px
 
 	# Return to default mode
 	Return mode "default"
