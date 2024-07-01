@@ -40,6 +40,7 @@ case $wm in
 
 		# Copy sway configs
 		copy_config foot sway swayidle swaylock waybar mako
+  		cp .screen-record.sh ~
 
 		# Set dark theme
 		gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
