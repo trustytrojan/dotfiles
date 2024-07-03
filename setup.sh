@@ -1,3 +1,4 @@
+#!/bin/sh
 set -e
 
 function copy_config {
@@ -9,8 +10,11 @@ function copy_config {
 
 PACMAN_OPTS="-Sy --needed"
 
-echo "Installing system-wide bashrc"
-sudo cp .bashrc /etc/bash.bashrc
+echo "Installing /etc/bash.bashrc"
+sudo cp bash.bashrc /etc/bash.bashrc
+
+echo "Installing ~/.bashrc"
+cp .bashrc ~
 
 copy_config nvim
 
@@ -24,7 +28,6 @@ sudo pacman $PACMAN_OPTS gammastep gnome-themes-extra ttc-iosevka dbus polkit-gn
 
 # Install shared configs
 copy_config gammastep gtk-3.0 mpv
-echo "export GTK_THEME=Adwaita-dark" >> ~/.bashrc
 
 # Install window manager + dependencies
 case $wm in
