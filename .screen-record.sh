@@ -1,4 +1,5 @@
 #!/bin/sh
+# Script to make usage of wf-recorder more enjoyable using notify-send.
 
 NOTIF_TITLE='Screen recorder'
 alias notify-send="notify-send '$NOTIF_TITLE' $@"
