@@ -11,7 +11,10 @@ function copy_config {
 PACMAN_OPTS="-Sy --needed"
 
 echo "Installing /etc/bash.bashrc"
-sudo cp bash.bashrc /etc/bash.bashrc
+sudo cp bash.bashrc /etc
+
+echo "Installing /etc/pacman.conf"
+sudo cp pacman.conf /etc
 
 echo "Installing ~/.bashrc"
 cp .bashrc ~
