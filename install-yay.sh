@@ -1,6 +1,4 @@
-# Install yay if not currently available.
-
-if type yay &> /dev/null; then
+if type yay &>/dev/null; then
 	echo "yay is already installed."
 else
 	sudo pacman -Sy --needed git base-devel
