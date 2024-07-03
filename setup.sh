@@ -1,43 +1,40 @@
 #!/bin/sh
 set -e
 
-function copy_config {
+install_config() {
 	for dir in $@; do
-		echo "Copying $dir config"
+		echo "Installing ~/.config/$dir"
 		cp -r .config/$dir ~/.config
 	done
 }
 
-PACMAN_OPTS="-Sy --needed"
+install_etc() {
+	for file in $@; do
+		echo "Installing /etc/$file"
+		sudo cp $file /etc
+	done
+}
 
-echo "Installing /etc/bash.bashrc"
-sudo cp bash.bashrc /etc
+install_home() {
+	for file in $@; do
+		echo "Installing ~/$file"
+		cp $file ~
+	done
+}
 
-echo "Installing /etc/pacman.conf"
-sudo cp pacman.conf /etc
+# Install non-WM-related stuff
+install_etc bash.bashrc pacman.conf
+install_home .bashrc
+install_config nvim
 
-echo "Installing ~/.bashrc"
-cp .bashrc ~
-
-copy_config nvim
-
-read -p "Sway or i3? " wm
-[[ $wm == "sway" || $wm == "i3" ]] || exit
-
-# Install shared packages
-sudo pacman $PACMAN_OPTS gammastep gnome-themes-extra ttc-iosevka dbus polkit-gnome libnotify qpwgraph pavucontrol \
-	libva-mesa-driver mesa-vdpau pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber mpv \
- 	$(lscpu | grep Intel && echo intel-media-driver libva-intel-driver)
-
-# Install shared configs
-copy_config gammastep gtk-3.0 mpv
+PACMAN_OPTS='-Sy --needed'
 
 # Install window manager + dependencies
-case $wm in
+case $(read -rp 'Sway or i3? '; echo $REPLY) in
 	sway)
 		# Require yay installation
 		if ! type yay >/dev/null; then
-			echo "yay is not installed. Aborting."
+			echo 'error: yay is not installed. Exiting.'
 			exit 1
 		fi
 
@@ -45,23 +42,36 @@ case $wm in
 		yay $PACMAN_OPTS swayfx swayidle swaybg swaylock-effects wofi wl-clipboard foot waybar otf-font-awesome grim slurp xdg-desktop-portal-wlr wf-recorder
 
 		# Copy sway configs
-		copy_config foot sway swayidle swaylock waybar mako
-  		cp .screen-record.sh ~
-    		chmod u+x ~/.screen-record.sh
-
-		# Set dark theme
-		gsettings set org.gnome.desktop.interface gtk-theme "Adwaita-dark"
+		install_config foot sway swayidle swaylock waybar mako
+		install_home .screen-record.sh
+		chmod u+x ~/.screen-record.sh
+		;;
 
 	i3)
 		# Install i3 packages
 		sudo pacman $PACMAN_OPTS i3 xorg-server xorg-drivers xorg-xinit feh xterm rofi ffmpeg
 
 		# Copy configs and X files
-		copy_config i3
-		cp .Xdefaults ~
-		cp .xinitrc ~
+		install_config i3
+		install_home .Xdefaults xinitrc
 		chmod u+x ~/.xinitrc
+		;;
+
+	*)
+		echo 'No window manager chosen. Exiting.'
+		exit
 esac
 
+# Install shared packages
+sudo pacman $PACMAN_OPTS gammastep gnome-themes-extra ttc-iosevka dbus polkit-gnome libnotify qpwgraph pavucontrol \
+	libva-mesa-driver mesa-vdpau pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber mpv \
+ 	$(lscpu | grep Intel && echo 'intel-media-driver libva-intel-driver')
+
+# Install shared configs
+install_config gammastep gtk-3.0 mpv
+
+# Set dark theme
+gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
+
 # Copy wallpaper
-cp .wallpaper.jpg ~
+install_home .wallpaper.jpg
