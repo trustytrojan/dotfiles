@@ -1,4 +1,4 @@
-# Meant to replace /etc/bash.bashrc on my Arch Linux installs.
+# This file is meant to replace /etc/bash.bashrc on my Arch Linux installs
 
 set_ps1() {
 	# Color/style escape sequences
