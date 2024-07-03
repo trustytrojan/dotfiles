@@ -22,12 +22,13 @@ install_home() {
 	done
 }
 
+PACMAN_OPTS='-Sy --needed'
+
 # Install non-WM-related stuff
 install_etc bash.bashrc pacman.conf
 install_home .bashrc
-install_config nvim
-
-PACMAN_OPTS='-Sy --needed'
+install_config nvim htop
+sudo pacman $PACMAN_OPTS neovim htop
 
 # Install window manager + dependencies
 case $(read -rp 'Sway or i3? '; echo $REPLY) in
