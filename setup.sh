@@ -66,7 +66,7 @@ esac
 # Install shared packages
 sudo pacman $PACMAN_OPTS gammastep gnome-themes-extra ttc-iosevka dbus polkit-gnome libnotify qpwgraph pavucontrol \
 	libva-mesa-driver mesa-vdpau pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber mpv \
- 	$(lscpu | grep Intel && echo 'intel-media-driver libva-intel-driver')
+ 	$(lscpu | grep Intel >/dev/null && echo 'intel-media-driver libva-intel-driver')
 
 # Install shared configs
 install_config gammastep gtk-3.0 mpv
