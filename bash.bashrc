@@ -28,7 +28,7 @@ set_ps1() {
         esac
 
         # Colored prompt
-        PS1="$BRACKET[ $USER\u$RESET@\h $BLUE\W $BRACKET]$RESET$PROMPT_CHAR "
+        PS1="$BRACKET[ $USER\u$RESET@\H $BLUE\W $BRACKET]$RESET$PROMPT_CHAR "
 }
 
 set_ps1
