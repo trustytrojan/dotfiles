@@ -3,6 +3,13 @@ set tabstop=4
 set shiftwidth=4
 set noexpandtab
 
+function! SetMyColors()
+	hi Normal guibg=Transparent
+	hi StatusLine guifg=#cccccc guibg=#005555
+endfunction
+
+call SetMyColors()
+
 """ End here if vim-plug is absent
 if ! filereadable(getenv('HOME') . '/.local/share/nvim/site/autoload/plug.vim')
 	finish
@@ -16,8 +23,7 @@ call plug#end()
 
 """ Colors
 colorscheme vscode_modern
-hi Normal guibg=#00000000
-hi StatusLine guifg=#cccccc guibg=#005555
+call SetMyColors()
 hi SignColumn guibg=#004040
 
 """ coc.nvim
