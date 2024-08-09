@@ -27,9 +27,7 @@
 	# Polkit authentication popups
 	exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
-	# xdg-desktop-portal-wlr (make sure to enable xdg-desktop-portal.service and xdg-desktop-portal-wlr.service)
-	exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-	exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+	include /etc/sway/config.d/*
 
 #
 # Preferences
