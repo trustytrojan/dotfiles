@@ -66,7 +66,8 @@ button:hover {
 #wireplumber,
 #tray,
 #mode,
-#scratchpad {
+#scratchpad,
+#idle_inhibitor {
     padding: 0 10px;
     color: #eeeeee;
 	background-color: #007777;
@@ -137,4 +138,8 @@ label:focus {
 
 #scratchpad.empty {
 	background-color: transparent;
+}
+
+#idle_inhibitor.activated {
+    background-color: #007777;
 }
