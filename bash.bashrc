@@ -13,10 +13,10 @@ set_ps1() {
         # Red username and `#` are reserved for root
         local USER PROMPT_CHAR
         if [ $UID = 0 ]; then
-                USER=$RED
+                USER_COLOR=$RED
                 PROMPT_CHAR=\#
         else
-                USER=$WHITE
+                USER_COLOR=$WHITE
                 PROMPT_CHAR=\$
         fi
 
@@ -28,7 +28,7 @@ set_ps1() {
         esac
 
         # Colored prompt
-        PS1="$BRACKET[ $USER\u$RESET@\H $BLUE\W $BRACKET]$RESET$PROMPT_CHAR "
+        PS1="$BRACKET[ $USER_COLOR\u$RESET@\H $BLUE\W $BRACKET]$RESET$PROMPT_CHAR "
 }
 
 set_ps1
