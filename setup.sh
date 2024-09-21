@@ -59,7 +59,7 @@ case $(read -rp 'Sway or i3? '; echo $REPLY) in
 
 		# Copy configs and X files
 		install_config i3
-		install_home .Xdefaults xinitrc
+		install_home .Xdefaults .xinitrc
 		chmod u+x ~/.xinitrc
 		;;
 

@@ -12,15 +12,11 @@ endif
 call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'gmr458/vscode_modern_theme.nvim'
-Plug 'nvim-tree/nvim-web-devicons' " requires Hack Nerd Font
-Plug 'nvim-tree/nvim-tree.lua'
 call plug#end()
 
 """ Colors
 colorscheme vscode_modern
 hi Normal guibg=Transparent
-hi NvimTreeNormal guibg=Transparent
-hi NvimTreeCursorLine guibg=#005555
 hi link CocSemNamespace Type
 hi StatusLine guifg=#cccccc guibg=#005555
 hi SignColumn guibg=#004040
@@ -66,17 +62,3 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming
 nnoremap RN <Plug>(coc-rename)
-
-lua <<EOF
--- disable netrw at the very start of your init.lua
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
--- optionally enable 24-bit colour
-vim.opt.termguicolors = true
-
--- empty setup using defaults
-require("nvim-tree").setup()
-
--- open tree on startup
-require("nvim-tree.api").tree.toggle()
