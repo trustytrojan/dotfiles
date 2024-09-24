@@ -1,5 +1,4 @@
-#!/bin/sh
-# ArchWiki installation guide as a script.
+#!/bin/bash
 set -e
 
 usage() {
@@ -10,7 +9,7 @@ usage() {
 
 prompt_yn() {
     read -rp "$1 [y/N] "
-    [ $REPLY = 'y' ]
+    [[ "$REPLY" == 'y' ]]
 }
 
 [ $2 ] || usage
@@ -37,9 +36,7 @@ echo 'done'
 prompt_yn 'continue?' || exit
 
 mount $ARCH_PART /mnt
-[ $ESP && prompt_yn $'mount the esp to /mnt/boot?\nyou might not want to if you use a custom bootloader.' ] \
-    && mount $ESP -m /mnt/boot
-pacstrap -K /mnt base linux linux-firmware sudo neovim
+pacstrap -K /mnt base linux linux-firmware sudo neovim networkmanager
 genfstab -U /mnt >>/mnt/etc/fstab
 arch-chroot /mnt <<<"
 ln -sf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
@@ -47,7 +44,7 @@ hwclock --systohc
 echo 'en_US.UTF-8 UTF-8' >/etc/locale.gen
 locale-gen
 echo 'LANG=en_US.UTF-8' >/etc/locale.conf
-echo '$HOSTNAME' >/etc/hostname
-passwd"
+echo '$HOSTNAME' >/etc/hostname"
+arch-chroot /mnt passwd
 
-echo 'installation and basic setup complete!'
+echo 'installation and basic setup complete! no bootloader was installed, so run install-grub.sh to install grub!'
