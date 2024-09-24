@@ -47,4 +47,4 @@ echo 'LANG=en_US.UTF-8' >/etc/locale.conf
 echo '$HOSTNAME' >/etc/hostname"
 arch-chroot /mnt passwd
 
-echo 'installation and basic setup complete! no bootloader was installed, so run install-grub.sh to install grub!'
+echo 'installation and basic setup complete! FYI no bootloader was installed!!'
