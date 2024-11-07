@@ -219,7 +219,10 @@ bindsym {
 	$mod+f fullscreen
 
 	# Toggle the current focus between tiling and floating mode
-	$mod+space floating toggle
+	$mod+Shift+Space floating toggle
+
+	# Moves focus between the floating and tiled layers
+	$mod+Space focus mode_toggle
 
 	# Move focus to the parent container
 	$mod+a focus parent
