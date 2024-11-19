@@ -10,7 +10,7 @@
 	set $term foot
 
 	# Application launcher command
-	set $menu wofi --show=drun
+	set $menu pidof wofi || wofi --show=drun
 
 	# Drag floating windows by holding down $mod and left mouse button.
 	# Resize them with right mouse button + $mod.
@@ -27,6 +27,10 @@
 	# Polkit authentication popups
 	exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
+	# Autostart applications
+	exec dex -a
+
+	# Include OS-specific configurations
 	include /etc/sway/config.d/*
 
 #

@@ -1,6 +1,11 @@
 #!/bin/sh
 set -e
 
+[ -d .config ] || {
+	echo ".config folder not found! please run the script where the .config folder is in the cloned dotfiles repo"
+	exit 1
+}
+
 install_config() {
 	for dir in $@; do
 		echo "Installing ~/.config/$dir"
