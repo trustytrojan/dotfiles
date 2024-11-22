@@ -67,32 +67,48 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    # wayland
     grim
     slurp
+    waybar
+    gammastep
+
+    # desktop
+    gnome-tweaks
+    gnome-themes-extra
+    dex
+    polkit_gnome
+
+    # audio
     pavucontrol
     sof-firmware
     qpwgraph
+    pulseaudio # just for pactl
+
+    # system tools
     brightnessctl
-    gammastep
-    git
-    waybar
     nvtop
-    vscode
-    polkit_gnome
     gparted
     parted
     ventoy
     xorg.xlsclients
-    vesktop
-    gnome.gnome-tweaks
-    gnome.gnome-themes-extra
-    dex
-    ntfs3g
     fastfetch
     lshw
-  ];
+    xdg-utils
+    ntfs3g
+    lm_sensors
+    file
 
-  programs.firefox.enable = true;
+    # software
+    git
+    vesktop
+    libreoffice-qt6-fresh
+    thunderbird
+    nodejs_23
+    deno
+    firefox
+    librewolf
+  ];
 
   programs.neovim = {
     enable = true;
@@ -130,9 +146,9 @@
   fonts = {
     packages = with pkgs; [
       liberation_ttf
-      font-awesome
+      font-awesome_5
       iosevka-bin
-      noto-fonts-cjk
+      noto-fonts-cjk-sans
       noto-fonts-emoji
       noto-fonts-extra
     ];
@@ -189,9 +205,7 @@
   };
 
   # Enable OpenGL
-  hardware.opengl = {
-    enable = true;
-  };
+  hardware.graphics.enable = true;
 
   # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
@@ -254,4 +268,9 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
+
+  system.autoUpgrade = {
+    enable = true;
+    #allowReboot = true;
+  };
 }
