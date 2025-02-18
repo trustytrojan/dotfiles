@@ -1,5 +1,12 @@
-image=~/.wallpaper.jpg
+screenshots
 clock
 indicator
 fade-in=1
 effect-blur=7x5
+submit-on-touch
+show-failed-attempts
+ignore-empty-password
+font=Iosevka
+ring-color=c3c8ff
+text-color=c3c6ff
+inside-color=2c3044cc
