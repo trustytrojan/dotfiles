@@ -59,6 +59,9 @@
 	# Startup applications (PC dependent, fill out yourself)
 	exec corectrl
 
+	# Set background to mpvpaper (change DP-1 to your output)
+	swaybg_command mpvpaper -po '--loop' DP-1 yuuka-wallpaper.mp4
+
 #
 # SwayFX Configuration
 #
