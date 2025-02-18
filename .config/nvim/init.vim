@@ -18,8 +18,8 @@ call plug#end()
 colorscheme vscode_modern
 hi Normal guibg=Transparent
 hi link CocSemNamespace Type
-hi StatusLine guifg=#cccccc guibg=#005555
-hi SignColumn guibg=#004040
+hi StatusLine guifg=#c3c8ff guibg=#4e5066
+hi SignColumn guibg=#3e4055
 
 """ coc.nvim
 set signcolumn=yes
