@@ -1,4 +1,5 @@
 # `man 5 sway`
+# *This is a SwayFX config*
 
 #
 # Essentials
@@ -46,21 +47,27 @@
 	# Window border width in pixels
 	default_border pixel 2
 
+	# Yuuka colors
+	set $bright #c3c8ff
+	set $dark #4e5066
+
 	# Window border colors when focused and unfocused
 	# Read `man 5 sway` to understand this
-	client.focused #00cccc #00cccc #004444 #00cccc
-	client.unfocused #00cccc #808080 #eeeeee #808080
+	client.focused $bright $bright $dark $bright
+	client.unfocused $bright #808080 #eeeeee #808080
 
 	# Startup applications (PC dependent, fill out yourself)
+	exec corectrl
 
 #
 # SwayFX Configuration
 #
-	# Background blur for transparent windows
 	blur enable
-
-	# Rounded window corners
 	corner_radius 5
+	shadows enable
+	shadow_color $bright
+	shadow_inactive_color $dark
+	layer_effects "waybar" blur enable; corner_radius 17
 
 #
 # Bar command
