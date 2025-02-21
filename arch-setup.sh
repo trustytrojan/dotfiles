@@ -1,11 +1,6 @@
 #!/bin/sh
 set -e
 
-[ -d .config ] || {
-	echo ".config folder not found! please run the script where the .config folder is in the cloned dotfiles repo"
-	exit 1
-}
-
 install_config() {
 	for dir in $@; do
 		echo "Installing ~/.config/$dir"
@@ -79,7 +74,7 @@ sudo pacman $PACMAN_OPTS gammastep gnome-themes-extra ttc-iosevka dbus polkit-gn
  	$(lscpu | grep Intel >/dev/null && echo 'intel-media-driver libva-intel-driver') xorg-xhost xorg-xrandr
 
 # Install shared configs
-install_config gammastep gtk-3.0 mpv
+install_config gammastep gtk-3.0 mpv vesktop
 
 # Set dark theme
 gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
