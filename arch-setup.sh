@@ -45,7 +45,8 @@ case $(read -rp 'Sway or i3? '; echo $REPLY) in
 		done
 
 		# Install sway packages
-		yay $PACMAN_OPTS swayfx swayidle swaybg swaylock-effects wofi wl-clipboard foot waybar otf-font-awesome grim slurp xdg-desktop-portal-wlr wf-recorder
+		yay $PACMAN_OPTS swayfx swayidle swaybg swaylock-effects wofi wl-clipboard foot waybar otf-font-awesome grim slurp xdg-desktop-portal-wlr wf-recorder \
+  			qt5-wayland qt6-wayland xdg-desktop-portal-gtk
 
 		# Copy sway configs
 		install_config foot sway swayidle swaylock waybar mako
