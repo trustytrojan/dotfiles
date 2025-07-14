@@ -10,6 +10,7 @@
 	set $term foot
 
 	# Application launcher command
+	# The `pidof` part prevents more than one from spawning
 	set $menu pidof wofi || wofi --show=drun
 
 	# Drag floating windows by holding down $mod and left mouse button.
@@ -33,6 +34,9 @@
 	# Include OS-specific configurations
 	include /etc/sway/config.d/*
 
+	# Screen tearing for fullscreen applications
+	for_window [all] allow_tearing yes
+
 #
 # Preferences
 #
@@ -50,8 +54,6 @@
 	# Read `man 5 sway` to understand this
 	client.focused #00cccc #00cccc #004444 #00cccc
 	client.unfocused #00cccc #808080 #eeeeee #808080
-
-	# Startup applications (PC dependent, fill out yourself)
 
 #
 # SwayFX Configuration
@@ -105,6 +107,7 @@ output {
 	* bg ~/.wallpaper.jpg fill
 
 	# Custom display modes (PC dependent, fill out yourself)
+	# Don't forget `allow_tearing yes`!
 }
 
 #
