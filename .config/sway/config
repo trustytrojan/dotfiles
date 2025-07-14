@@ -34,6 +34,9 @@
 	# Include OS-specific configurations
 	include /etc/sway/config.d/*
 
+	# Screen tearing for fullscreen applications
+	for_window [all] allow_tearing yes
+
 #
 # Preferences
 #
@@ -55,9 +58,6 @@
 	# Read `man 5 sway` to understand this
 	client.focused $bright $bright $dark $bright
 	client.unfocused $bright #808080 #eeeeee #808080
-
-	# Startup applications (PC dependent, fill out yourself)
-	exec corectrl
 
 	# Disable swaybg, start mpvpaper (change DP-1 to your output)
 	swaybg_command -
@@ -116,6 +116,7 @@ output {
 	* bg ~/.wallpaper.jpg fill
 
 	# Custom display modes (PC dependent, fill out yourself)
+	# Don't forget `allow_tearing yes`!
 }
 
 #
