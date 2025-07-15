@@ -34,8 +34,11 @@
 	# Include OS-specific configurations
 	include /etc/sway/config.d/*
 
-	# Screen tearing for fullscreen applications
-	for_window [all] allow_tearing yes
+	# Disable VSync for games (will add more in the future)
+	for_window [app_id="osu!"] allow_tearing yes
+
+	# Don't idle-lock the screen on fullscreen windows
+	for_window [all] inhibit_idle fullscreen
 
 #
 # Preferences
