@@ -69,10 +69,12 @@ case $(read -rp 'Sway or i3? '; echo $REPLY) in
 		exit
 esac
 
-# Install shared packages (audio server, media player, hwaccel drivers, polkit frontend)
+# Install shared packages: audio server, media player, hwaccel drivers, polkit frontend, file manager (nemo),
+# xorg packages for legacy software, MTP support in nemo
 sudo pacman $PACMAN_OPTS gammastep gnome-themes-extra ttc-iosevka dbus polkit-gnome libnotify qpwgraph pavucontrol \
 	libva-mesa-driver mesa-vdpau pipewire pipewire-alsa pipewire-pulse pipewire-jack wireplumber mpv \
- 	$(lscpu | grep Intel >/dev/null && echo 'intel-media-driver libva-intel-driver') xorg-xhost xorg-xrandr
+ 	$(lscpu | grep Intel >/dev/null && echo 'intel-media-driver libva-intel-driver') xorg-xhost xorg-xrandr \
+  	nemo gvfs-mtp
 
 # Install shared configs
 install_config gammastep gtk-3.0 mpv vesktop
