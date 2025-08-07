@@ -62,3 +62,76 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming
 nnoremap RN <Plug>(coc-rename)
+
+" Improved version that comments all selected lines
+function! CommentVisual() range
+    " Get the comment string for the current filetype
+    let comment_string = ''
+    if &filetype == 'python' || &filetype == 'sh' || &filetype == 'ruby' || &filetype == 'perl' || &filetype == 'yaml'
+        let comment_string = '# '
+    elseif &filetype == 'javascript' || &filetype == 'typescript' || &filetype == 'java' || &filetype == 'c' || &filetype == 'cpp' || &filetype == 'go'
+        let comment_string = '// '
+    elseif &filetype == 'vim'
+        let comment_string = '" '
+    elseif &filetype == 'lua'
+        let comment_string = '-- '
+    elseif &filetype == 'html' || &filetype == 'xml'
+        let comment_string = '<!-- '
+        let comment_end = ' -->'
+    elseif &filetype == 'css' || &filetype == 'scss'
+        let comment_string = '/* '
+        let comment_end = ' */'
+    else
+        " Default to # if no specific comment string is found
+        let comment_string = '# '
+    endif
+
+    " Save the current register and cursor position
+    let save_reg = @"
+    let save_pos = getpos(".")
+
+    " For line-wise visual mode (V)
+    if mode() == 'V'
+        if exists('comment_end')
+            execute "'<,'>s/^/" . comment_string . "/"
+            execute "'<,'>s/$/" . comment_end . "/"
+        else
+            execute "'<,'>s/^/" . comment_string . "/"
+        endif
+    else
+        " For character-wise visual mode (v)
+        let lines = getline("'<", "'>")
+        let new_lines = []
+        
+        if exists('comment_end')
+            for line in lines
+                if line ==# lines[0] && line ==# lines[-1]
+                    " Single line selection
+                    call add(new_lines, comment_string . line . comment_end)
+                elseif line ==# lines[0]
+                    " First line of multi-line selection
+                    call add(new_lines, comment_string . line)
+                elseif line ==# lines[-1]
+                    " Last line of multi-line selection
+                    call add(new_lines, line . comment_end)
+                else
+                    " Middle lines
+                    call add(new_lines, line)
+                endif
+            endfor
+        else
+            for line in lines
+                call add(new_lines, comment_string . line)
+            endfor
+        endif
+        
+        call setline("'<", new_lines)
+    endif
+
+    " Restore register and cursor position
+    call setpos('.', save_pos)
+    let @" = save_reg
+endfunction
+
+" Map the function to Ctrl-/ in visual mode
+vnoremap <C-/> :call CommentVisual()<CR>
