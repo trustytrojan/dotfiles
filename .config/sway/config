@@ -23,7 +23,7 @@
 
 	# gammastep + geoclue
 	exec /usr/lib/geoclue-2.0/demos/agent
-	exec gammastep
+	# exec gammastep # gammastep had a systemd user service all along. use that instead
 
 	# Polkit authentication popups
 	exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
