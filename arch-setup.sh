@@ -82,6 +82,9 @@ install_config gammastep gtk-3.0 mpv vesktop
 # Set dark theme
 gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
 
+# Enable user services
+systemctl --user enable --now gammastep mako
+
 # Copy wallpaper
 install_home .wallpaper.jpg
 
