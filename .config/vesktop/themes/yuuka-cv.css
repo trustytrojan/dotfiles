@@ -1,0 +1,57 @@
+/**
+ * @name yuuka-cv
+ * @author trustytrojan
+ * @version 7.0.0
+ * @description clearvision theme to match with my sway yuuka rice
+ */
+
+/* IMPORT CSS */
+@import url("https://clearvision.github.io/ClearVision-v7/main.css");
+@import url("https://clearvision.github.io/ClearVision-v7/vencord.css");
+@import url('https://raw.githubusercontent.com/DiscordStyles/RadialStatus/deploy/RadialStatus.theme.css');
+
+/* SETTINGS */
+:root {
+
+/* ACCENT COLORS */
+--main-color: #c3c8ff;
+--hover-color: #2c3044;
+--success-color: #43b581;
+--danger-color: #982929;
+
+/* APP BACKGROUND */
+--background-shading-percent: 100%;
+--background-image: transparent;
+
+/* USER POPOUT BACKGROUND */
+--user-popout-image: var(--background-image);
+--user-popout-attachment: var(--background-attachment);
+--user-popout-filter: var(--background-filter);
+
+/* USER MODAL BACKGROUND */
+--user-modal-image: var(--background-image);
+--user-modal-attachment: var(--background-attachment);
+--user-modal-filter: var(--background-filter);
+
+/* HOME ICON */
+--home-icon: url(https://clearvision.github.io/icons/discord.svg);
+
+/* FONTS */
+--main-font: "gg sans", Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+--code-font: "Iosevka Fixed", Consolas, "gg mono", "Liberation Mono", Menlo, Courier, monospace;
+
+/* RadialStatus */
+--rs-small-spacing: 2px;
+--rs-medium-spacing: 2px;
+--rs-large-spacing: 2px;
+--rs-small-width: 2px;
+--rs-medium-width: 2px;
+--rs-large-width: 2px;
+--rs-avatar-shape: 50%;
+--rs-online-color: #43b581;
+--rs-idle-color: #faa61a;
+--rs-dnd-color: #f04747;
+--rs-offline-color: #636b75;
+--rs-streaming-color: #643da7;
+--rs-phone-visible: none;
+}

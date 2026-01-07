@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Script to make usage of wf-recorder more enjoyable using notify-send.
 
 NOTIF_TITLE='Screen recorder'

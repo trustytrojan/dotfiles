@@ -13,18 +13,18 @@ set_ps1() {
 	# Red username and `#` are reserved for root
 	local USER PROMPT_CHAR
 	if [ $UID = 0 ]; then
-			USER_COLOR=$RED
-			PROMPT_CHAR=\#
+		USER_COLOR=$RED
+		PROMPT_CHAR=\#
 	else
-			USER_COLOR=$WHITE
-			PROMPT_CHAR=\$
+		USER_COLOR=$WHITE
+		PROMPT_CHAR=\$
 	fi
 
 	# Decide bracket color based on distro
 	local BRACKET
 	case $(grep '^ID=' /etc/os-release | cut -d'=' -f2) in
-			arch)   BRACKET=$CYAN ;;
-			debian) BRACKET=$RED ;;
+		arch)	BRACKET=$CYAN ;; # may have to set this to white for yuuka theme
+		debian)	BRACKET=$RED ;;
 	esac
 
 	# Colored prompt
