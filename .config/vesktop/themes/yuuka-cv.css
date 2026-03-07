@@ -20,7 +20,9 @@
 --danger-color: #982929;
 
 /* APP BACKGROUND */
---background-shading-percent: 100%;
+/* FYI: this isn't window translucency, it controls the translucency/alpha/shading of various UI components */
+/* making it 0 makes all the components have the same translucency/alpha/shading, which looks WAY nicer */
+--background-shading-percent: 0;
 --background-image: transparent;
 
 /* USER POPOUT BACKGROUND */
