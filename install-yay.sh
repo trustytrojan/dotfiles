@@ -1,3 +1,4 @@
+#!/bin/sh
 if type yay &>/dev/null; then
 	echo "yay is already installed."
 else

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Script to make usage of wf-recorder more enjoyable using notify-send.
 
 NOTIF_TITLE='Screen recorder'
@@ -34,7 +34,7 @@ wf-recorder \
 	--output "$OUTPUT" \
 	--audio="$AUDIO_DEVICE" \
 	--file "$FILE" \
- 	&>>"$LOGFILE"
+ 	&>"$LOGFILE"
 
 if [ $? -ne 0 ]; then
 	output "Failed to start wf-recorder! See $LOGFILE"

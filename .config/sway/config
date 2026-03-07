@@ -1,5 +1,5 @@
 # `man 5 sway`
-# *This is a SwayFX config*
+include /etc/sway/config.d/*
 
 #
 # Essentials
@@ -11,6 +11,7 @@
 	set $term foot
 
 	# Application launcher command
+	# The `pidof` part prevents more than one from spawning
 	set $menu pidof wofi || wofi --show=drun
 
 	# Drag floating windows by holding down $mod and left mouse button.
@@ -21,9 +22,8 @@
 	# Idle daemon
 	exec swayidle
 
-	# gammastep + geoclue
-	exec /usr/lib/geoclue-2.0/demos/agent
-	exec gammastep
+	# Night light (service dies if sway isn't running, have to manually start it)
+	exec systemctl --user start gammastep
 
 	# Polkit authentication popups
 	exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -31,8 +31,11 @@
 	# Autostart applications
 	exec dex -a
 
-	# Include OS-specific configurations
-	include /etc/sway/config.d/*
+	# Disable VSync for games (will add more in the future)
+	for_window [app_id="osu!"] allow_tearing yes
+
+	# Don't idle-lock the screen on fullscreen windows
+	for_window [all] inhibit_idle fullscreen
 
 	# Disable VSync for games (will add more in the future)
 	for_window [app_id="osu!"] allow_tearing yes
