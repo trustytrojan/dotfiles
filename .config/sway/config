@@ -67,7 +67,7 @@ include /etc/sway/config.d/*
 
 	# Disable swaybg, start mpvpaper (change DP-1 to your output)
 	swaybg_command -
-	exec mpvpaper -po '--loop' DP-1 yuuka-wallpaper.mp4
+	exec mpvpaper -po '--loop' DP-1 .track-yuuka-1080p30.mp4
 
 #
 # SwayFX Configuration
